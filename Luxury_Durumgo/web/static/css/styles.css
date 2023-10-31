@@ -22,7 +22,7 @@ body {
 header {
     background-color: #000000;
     /* Dark background for the header */
-    color: #FFD95A;
+    
     /* Light text color for the header */
     padding: 20px 0;
     text-align: center;
@@ -44,7 +44,8 @@ header h1 {
 /* Navigation styles */
 .navbar {
     width: 100%;
-    background-color: #222;
+    background-color: #161617
+    ;
     /* Dark background for the navbar */
     margin-bottom: 20px;
 }
@@ -69,36 +70,10 @@ header h1 {
     height: 62px;
 }
 
-/* Button styles (for login button, etc.) */
-.btn-luxurious {
-    background-color: #007bff;
-    /* Luxurious button background color */
-    color: #fff;
-    /* Luxurious button text color */
-    border: none;
-    border-radius: 5px;
-    /* Rounded button corners */
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
-}
 
-.btn-luxurious:hover {
-    background-color: #222;
-    /* Background color on button hover */
-    color: #fff;
-    /* Text color on button hover */
-}
 
-/* Footer styles */
-footer {
-    background-color: #222;
-    /* Dark background for the footer */
-    color: #fff;
-    /* Light text color for the footer */
-    padding: 20px 0;
-    text-align: center;
-}
+
+
 
 /* Additional styles for page content (adjust as needed) */
 .page-content {
@@ -114,11 +89,9 @@ footer {
 }
 
 .carousel-item {
-    background-color: #222;
-    /* Dark background color */
+    background-color: #161617;/* Dark background color */
     text-align: center;
-    color: #fff;
-    /* Light text color */
+    
 
 }
 
@@ -194,5 +167,7 @@ footer{
     margin-top: 1em; /*goiko margina*/
     padding: 2em;/* barruan 2emko errellenoa edukiko du*/
     width: 100%;
+    background-color:#161617;
+    color: #fff;
 }
 

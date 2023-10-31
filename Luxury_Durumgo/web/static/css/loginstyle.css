@@ -1,25 +1,30 @@
 /* Custom Luxurious CSS for Login Form */
-/*
 body {
-    background-color: #f0f0f0; /* Fondo del cuerpo 
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+  
+    min-height: 100vh;
+    
 }
+
 
 .container {
     margin-top: 50px;
 }
 
 .login-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #161617;
+    border: 1px solid #FFD95A;
     border-radius: 10px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 15px #FFD95A;
     padding: 30px;
 }
 
 .login-form h2 {
     text-align: center;
-    font-family: 'cursive', cursive; /* Fuente lujosa 
-    color: #333; /* Color del título 
+    font-family: "luxurious roman", serif; /* Fuente lujosa */
+    color: #D9D9D9; /* Color del título */
 }
 
 .form-group input {
@@ -28,24 +33,30 @@ body {
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 16px;
+    font-family: "luxurious roman", serif;
+
 }
 
 .btn-primary {
-    background-color: #800080; /* Color del botón 
-    border: 1px solid #800080;
+    background-color: #FFD95A; /* Color del botón */
+    border: 1px solid #FFD95A;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 18px;
-    color: #fff; /* Color del texto del botón 
+    color: #000000;; /* Color del texto del botón */
     transition: background-color 0.3s ease;
+    font-family: "luxurious roman", serif;
 }
 
 .btn-primary:hover {
-    background-color: #4B0082; /* Cambio de color al pasar el mouse 
+    background-color: #fffeff; /* Cambio de color al pasar el mouse */
+    color: #000000;
 }
 
-.form-check-label input[type="checkbox"] {
+.form-check-label  {
     margin-right: 5px;
+    color: #D9D9D9;
+    font-family: "luxurious roman", serif;
 }
 
 .float-right {
@@ -55,22 +66,14 @@ body {
 .float-left {
     float: left;
 }
-*/
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000000;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    
-}
 
+
+/*
 .container {
     max-width: 400px;
     margin: 0 auto;
     padding: 30px;
-    background: #fff;
+    background: #161617;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -80,9 +83,10 @@ body {
     font-weight: bold;
 }
 
-.form-control {
+.form-group {
     border: 1px solid #ccc;
     border-radius: 3px;
+    width:100%;
 }
 
 .btn-primary {
@@ -93,4 +97,4 @@ body {
 .btn-primary:hover {
     background: #ffd633;
     border: 1px solid #ffd633;
-}
+}*/
