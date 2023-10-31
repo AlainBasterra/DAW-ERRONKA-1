@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     // Make an AJAX request to fetch carousel content
     var url = '../static/json/argazkiak.json'; // Replace with your data source URL
