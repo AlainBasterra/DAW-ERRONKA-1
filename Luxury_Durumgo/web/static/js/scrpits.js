@@ -1,24 +1,29 @@
 $(document).ready(function () {
     // Make an AJAX request to fetch carousel content
+    var url = '../static/json/argazkiak.json'; // Replace with your data source URL
     $.ajax({
-        url: 'your-data-endpoint-url', // Replace with your data source URL
+        
         method: 'GET',
-        dataType: 'json',
+        url:url,
         success: function (data) {
             // Populate the carousel with the fetched data
-            var carouselContent = $('#carousel-content');
-            $.each(data, function (index, item) {
-                var activeClass = index === 0 ? 'active' : ''; // First item is active
-                var carouselItem = `
-                    <div class="carousel-item ${activeClass}">
-                        <img src="${item.image}" class="d-block w-100" alt="${item.alt}">
-                        <div class="carousel-caption">
-                            <h3>${item.title}</h3>
-                            <p>${item.description}</p>
-                        </div>
-                    </div>
-                `;
-                carouselContent.append(carouselItem);
+            var carouselContent = '#carousel-content';
+            
+            $.each(data, function (index,item) {
+            var activeClass = index === 0 ? 'active' : '';
+            var carouselItem ='<div class= "carousel-item ' + activeClass + '">';
+                    
+                        carouselItem += '<img src="../static/img/'+ item.image + '">';
+                    
+                    
+                
+                 // First item is active
+                
+                    
+                    carouselItem += '</div>';  
+
+                $(carouselContent).append(carouselItem);
+            
             });
         },
         error: function () {

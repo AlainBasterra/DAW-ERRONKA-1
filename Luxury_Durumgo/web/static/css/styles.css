@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000000;
+    /* Background color for the entire page */
+    font-family: "luxurious roman", serif;
+    /* Font for the entire page */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #000000;
+    /* Dark background for the header */
+    color: #FFD95A;
+    /* Light text color for the header */
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-family: "luxurious roman", serif;
+    font-size: 64px;
+    background: linear-gradient(to bottom, #FFD95A, #201f1f);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+
+}
+
+/* Navigation styles */
+.navbar {
+    width: 100%;
+    background-color: #222;
+    /* Dark background for the navbar */
+    margin-bottom: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #FFD95A;
+    /* Light text color for navigation links */
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #007bff;
+    /* Hover color for navigation links */
+}
+
+.navbar-brand {
+    width: 125px;
+    height: 85px;
+}
+
+.nav-item img {
+    width: 62px;
+    height: 62px;
+}
+
+/* Button styles (for login button, etc.) */
+.btn-luxurious {
+    background-color: #007bff;
+    /* Luxurious button background color */
+    color: #fff;
+    /* Luxurious button text color */
+    border: none;
+    border-radius: 5px;
+    /* Rounded button corners */
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-luxurious:hover {
+    background-color: #222;
+    /* Background color on button hover */
+    color: #fff;
+    /* Text color on button hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: #222;
+    /* Dark background for the footer */
+    color: #fff;
+    /* Light text color for the footer */
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Additional styles for page content (adjust as needed) */
+.page-content {
+    padding: 20px;
+}
+
+#myCarousel {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+
+.carousel-item {
+    background-color: #222;
+    /* Dark background color */
+    text-align: center;
+    color: #fff;
+    /* Light text color */
+
+}
+
+.carousel-item img {
+    max-width: 100%;
+    max-height: 500px;
+    /* Adjust the maximum height as needed */
+    margin: 0 auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Elegant shadow for images */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent dark background for captions */
+    color: #fff;
+    padding: 20px;
+    /* Add padding to captions */
+
+}
+
+.carousel-caption h3 {
+    font-size: 32px;
+    /* Elegant font size for headings */
+    font-family: 'Cursive', cursive;
+    /* Example font family for a luxurious look */
+}
+
+.carousel-caption p {
+    font-size: 18px;
+    /* Font size for paragraph text */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+.carousel-indicators .active {
+    background-color: #222;
+    /* Active indicator color */
+}
+
+#info {
+    display: flex;
+
+    background-color: #161617;
+    color: #D9D9D9;
+    padding: 40px;
+    width: 65%;
+
+
+}
+
+#info img {
+    width: 100%;
+    height: 60%;
+
+}
+
+#info p {
+    width: 100%;
+    height: 60%;
+    margin: 20px;
+
+}
+footer{
+    align-items:center; /*non zentratuta dagoen*/
+    display: flex; /*flexbox bidez erakutsiko da*/
+    justify-content: space-between;/*horizontalki nola banatuko den adieraziko du. bai alboetan zein beraien artean espazioa emango du*/
+    margin-top: 1em; /*goiko margina*/
+    padding: 2em;/* barruan 2emko errellenoa edukiko du*/
+    width: 100%;
+}
+
+footer img {
+
+}
