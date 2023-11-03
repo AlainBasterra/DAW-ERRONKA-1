@@ -73,3 +73,13 @@ body {
     font-family: Arial, sans-serif; 
     font-size: 14px; 
   }
+
+.contact-submit {
+  background-color: #FFD95A;
+  color: #161617;
+  font-weight: bold;
+}
+
+.contact-map {
+  background-color: #161617;
+}
