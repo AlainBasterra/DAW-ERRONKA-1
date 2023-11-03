@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +17,13 @@
             <div class="col-md-4">
                 <div class="login-form">
                     <h2 class="text-center">Login</h2>
-                    <form id="login" >
+                    <form id="login">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <input id="helbideElektronikoa" type="email" class="form-control" placeholder="E-mail" required="required"pattern="[a-zA-Z0-9._%+-]+@gmail.com">
+                            <input id="helbideElektronikoa"  name="helbideElektronikoa" type="email" class="form-control" placeholder="E-mail" required="required" >
                         </div>
                         <div class="form-group">
-                            <input id="pasahitza" type="password" class="form-control" placeholder="Password" required="required">
+                            <input id="pasahitza" name="pasahitza" type="password" class="form-control" placeholder="Password" required="required">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -30,7 +32,9 @@
                             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
                             <a href="#" class="float-right">Forgot Password?</a>
                         </div>
+                       
                     </form>
+                    <script src="../static/js/loginscripts.js"></script>
                 </div>
             </div>
         </div>

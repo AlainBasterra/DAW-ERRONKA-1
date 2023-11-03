@@ -16,24 +16,25 @@
             <div class="col-md-4">
                 <div class="register-form">
                     <h2 class="text-center">Login</h2>
-                    <form id="register">
+                    <form id="register" action="{% url 'register_egin' %}" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <input id="nan" type="text" class="form-control" placeholder="DNI" required="required">
+                            <input name="nan" type="text" class="form-control" placeholder="DNI" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="izena" type="text" class="form-control" placeholder="name" required="required">
+                            <input name="izena" type="text" class="form-control" placeholder="name" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="abizena1" type="text" class="form-control" placeholder="Surname1" required="required">
+                            <input name="abizena1" type="text" class="form-control" placeholder="Surname1" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="abizena2" type="text" class="form-control" placeholder="surname2" required="required">
+                            <input name="abizena2" type="text" class="form-control" placeholder="surname2" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="helbideElektronikoa" type="email" class="form-control" placeholder="E-mail" required="required" pattern="[a-zA-Z0-9._%+-]+@gmail.com">
+                            <input name="helbideElektronikoa" type="email" class="form-control" placeholder="E-mail" required="required" pattern="[a-zA-Z0-9._%+-]+@gmail.com">
                         </div>
                         <div class="form-group">
-                            <input id="pasahitza" type="password" class="form-control" placeholder="Password" required="required">
+                            <input name="pasahitza" type="password" class="form-control" placeholder="Password" required="required">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>

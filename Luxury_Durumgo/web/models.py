@@ -1,11 +1,11 @@
 from django.db import models
 
-class Helbidea(models.Model):
-    herria = models.CharField(max_length=100,blank=False)
-    kodigoPostala = models.CharField(max_length=100, blank=False)
-    kalea = models.CharField(max_length=250,blank=False)
-    zenbakiaPisua = models.CharField(max_length=250, blank=False)
-    datuExtra = models.CharField(max_length=250)
+# class Helbidea(models.Model):
+#     herria = models.CharField(max_length=100,blank=False)
+#     kodigoPostala = models.CharField(max_length=100, blank=False)
+#     kalea = models.CharField(max_length=250,blank=False)
+#     zenbakiaPisua = models.CharField(max_length=250, blank=False)
+#     datuExtra = models.CharField(max_length=250)
 
 
 class Erabiltzailea(models.Model):
@@ -17,7 +17,7 @@ class Erabiltzailea(models.Model):
     pasahitza = models.CharField(max_length=250, blank=False)
     perfil = models.IntegerField(default = 1, blank=False)
     sortua = models.DateTimeField(auto_now=True)
-    helbidea = models.ForeignKey(Helbidea, on_delete=models.CASCADE)
+    
 
 class Produktua(models.Model):
     izena = models.CharField(max_length=100,blank=False)
@@ -40,3 +40,4 @@ class Salmenta(models.Model):
     zenbakiaSaskia = models.IntegerField()
     prezioaFinala = models.IntegerField()
     data = models.DateField(auto_now=True)
+    helbidea = models.CharField(max_length=1500, default="")
