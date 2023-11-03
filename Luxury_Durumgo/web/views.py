@@ -38,14 +38,6 @@ def login_egin(request):
     else:
         return JsonResponse({'success': False, 'message': 'Usuario o contraseña incorrectos'})
 
-    return JsonResponse({'success': False, 'message': 'Método no permitido'})
-    # with connection.cursor() as cursor:
-    #     sql = "SELECT izena FROM web_erabiltzailea WHERE helbideElektronikoa = %s AND pasahitza = %s"
-        
-    # izenasql = cursor.execute(sql, [post_helbidea, post_pasahitza])
-    
-    # request.session['izena'] = izenasql
-   
 
 
 def register(request):
