@@ -22,6 +22,9 @@ def login_index(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def checkout(request):
+    return render(request, 'checkout.html')
+
 def login_egin(request):
     
     post_helbidea = request.POST['helbideElektronikoa']
