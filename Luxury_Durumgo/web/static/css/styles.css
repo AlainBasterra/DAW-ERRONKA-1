@@ -69,12 +69,16 @@ header h1 {
     width: 62px;
     height: 62px;
 }
-
-
-
-
-
-
+.navbar a{
+    color: #FFD95A;
+}
+.dropdown-menu{
+    background-color: #161617;
+}
+.dropdown-item{
+    background-color: #161617;
+    color: #FFD95A;
+}
 /* Additional styles for page content (adjust as needed) */
 .page-content {
     padding: 20px;
