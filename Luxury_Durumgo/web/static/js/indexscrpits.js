@@ -11,7 +11,7 @@ $(document).ready(function () {
             '<a class="nav-link dropdown-toggle" href="#"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ' + izena + ' <img src = "../static/img/user.png "> <span class="sr-only">(current)</span></a>';
         user += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
         user += '<a class="dropdown-item" href="#">Profile</a>';
-        user += '<a class="dropdown-item" href="#">Log out</a>';
+        user += '<a class="dropdown-item" href="logout/">Log out</a>';
 
         perfilDiv.innerHTML = user;
     } else {

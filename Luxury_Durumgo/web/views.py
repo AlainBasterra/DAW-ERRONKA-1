@@ -59,3 +59,7 @@ def register_egin(request):
     erabiltzaileberria = Erabiltzailea(izena = post_izena, abizena1 = post_abizena1, abizena2 = post_abizena2, nan = post_nan, helbideElektronikoa = post_helbideElektronikoa, pasahitza = post_pasahitza)
     erabiltzaileberria.save()
     return HttpResponseRedirect(reverse('index'))
+
+def logout(request):
+    request.session.flush()
+    return HttpResponseRedirect(reverse('index'))
