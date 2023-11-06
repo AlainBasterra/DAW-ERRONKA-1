@@ -8,13 +8,13 @@ from django.contrib.auth import login
 
 # Create your views here.ç
 def index(request):
-    variable = request.session.get('izena')
-    if variable is not None:
-        context = {'izena': variable}
-        return render(request, 'index.html', context)
+    izena = request.session.get('izena')
+    if izena is not None:
+        context = {'izena': izena}
+        return render(request, 'index.html', context )
     else:
-
-        return render(request, 'index.html')
+        context = {'izena': 'else'}
+        return render(request, 'index.html', context)
 
 def login_index(request):
     return render(request, 'login.html')
@@ -36,7 +36,7 @@ def login_egin(request):
 
 
     if user is not None:
-        
+        request.session['izena'] = user.izena
         return JsonResponse({'success': True, 'redirect_url': reverse('index')})
     else:
         return JsonResponse({'success': False, 'message': 'Usuario o contraseña incorrectos'})
