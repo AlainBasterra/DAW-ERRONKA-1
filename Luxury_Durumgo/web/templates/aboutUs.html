@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/contactstyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap-icons/1.11.1/font/bootstrap-icons.css">
+    <title>Luxury Dürümgo</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .background-image {
+            background-image: url('../img/contact.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100px;
+            width: 100%;
+            position: relative;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gradient-text {
+            font-size: 50px;
+            background: linear-gradient(to bottom, #FFD95A, #201f1f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            z-index: 2;
+        }
+
+        .get-in-touch {
+            color: #FFD95A;
+        }
+
+        .subtitle {
+            color: #FFD95A;
+        }
+
+        .custom-icon {
+            color: #FFD95A;
+        }
+
+        .contact-info {
+            color: #D9D9D9;
+        }
+
+        .contact-info-middle {
+            border-right: 1px solid #FFD95A;
+            border-left: 1px solid #FFD95A;
+        }
+
+        .form-title {
+            color: #D9D9D9;
+            font-weight: bold;
+        }
+        
+        footer{
+            width: 100%;
+        }
+        .contact-form {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+            background-color: #161617;
+            width: 100%;
+            border: none;
+            color: #AAA;
+            border-radius: 3px;
+        }
+
+        h2 {
+            color: #FFD95A;
+        }
+
+        .appear-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 2s, transform 2s;
+        }
+
+        .appeared {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <img class="navbar-brand" src="../static/img/LOGO2.png"></img>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produktuak <span
+                            class="sr-only">(current)</span></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Kebab</a>
+                        <a class="dropdown-item" href="#">Durum</a>
+                        <a class="dropdown-item" href="#">Pizza</a>
+
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <img class="nav-link" src="../static/img/carrito1.png"></img>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login/">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="background-image">
+        <div class="text-container">
+            <p class="gradient-text appear-on-scroll" style="margin-top: 20px;">ABOUT US</p>
+        </div>
+    </div>
+
+    <div class="row mt-5 w-75 contact-info">
+        <div class="col-md-4 text-center">
+            <div class="col-12">
+                <p><i class="bi bi-phone custom-icon"></i></p>
+            </div>
+
+
+            <div class="col-12 appear-on-scroll" style="background-color: #161617; padding: 40px;height: 1230px;">
+                <h2>OUR CUTLERY</h2>
+                <br><br>
+                "At Luxury Dürümgo, we not only believe in culinary excellence but also in elegance and luxury in every
+                detail. Introducing our exclusive kebab cutlery, a masterpiece of craftsmanship that combines culinary
+                perfection with the brilliance and splendor of gold and enormous diamonds.<br><br>
+
+                Each piece of our cutlery is carefully designed and crafted by the most skilled master artisans. The
+                pure gold that envelopes them shines with a dazzling golden glow, making every meal an experience fit
+                for royalty. But what truly sets our cutlery apart is the enormous diamonds embedded in each piece. Each
+                diamond, handpicked for its exceptional clarity and quality, adds a touch of sophistication and luxury
+                to every bite.
+                <br><br>
+
+                Imagine savoring your favorite kebab with a pure gold spoon that glitters with the light of diamonds.
+                Every fork and knife becomes a jewel in itself, elevating the dining experience to an unparalleled
+                level. The feeling of holding this cutlery in your hands is a true sensory delight, a fusion of taste
+                and opulence that only Luxury Dürümgo can offer.
+
+                <br><br>
+                Welcome to a world of culinary luxury. Welcome to Luxury Dürümgo, where taste and glamour meet in every
+                meal."<br><br><br>
+
+                <img src="..\static\img\cuberteria.jpg" style="height: 300px; width: 300px; " class="appear-on-scroll">
+            </div>
+        </div>
+        <div class="col-md-4 text-center contact-info-middle">
+            <div class="col-12">
+                <p><i class="bi bi-geo-alt-fill"></i></p>
+            </div>
+
+
+            <div class="col-12 appear-on-scroll" style="background-color: #161617; padding: 40px;height: 1230px;">
+                <h2>DINING ROOM</h2>
+                <br><br>
+                The dining room of Luxury Dürümgo is a dreamlike haven where luxury and glamour intertwine in an elegant
+                and captivating embrace. Upon entering the grand doors of our restaurant, diners are transported into a
+                world of splendor that harks back to a golden era of opulence.<br><br>
+
+                At the very heart of the dining room, like the jeweler highlighting their most precious gem, hangs the
+                colossal golden chandelier. A masterpiece of lighting in its own right, this work of art descends
+                gracefully from the ceiling, casting a soft, golden light that bathes the space in a magical warmth.
+                Adorned with intricate details and crystals that sparkle like diamonds, this chandelier not only
+                illuminates the dining room but also draws looks and sighs of admiration.
+                <br><br>
+                The walls are adorned with hand-polished wood panels and decorated with artworks that reflect luxury and
+                opulence. The furniture, upholstered in sumptuous, gold-thread-embroidered velvet, beckons diners to
+                recline in royal comfort.
+                <br><br>
+                Welcome to our dining room, where luxury and glamour merge in a realm of exquisite splendor, where every
+                meal is a work of art, and every experience is unforgettable.<br><br><br>
+
+                <img src="..\static\img\jangela.jpg" style="height: 300px; width: 300px;" class="appear-on-scroll">
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="col-12">
+                <p><i class="bi bi-envelope"></i></p>
+            </div>
+
+
+            <div class="col-12 appear-on-scroll" style="background-color: #161617; padding: 40px; height: 1230px;">
+                <h2>KITCHEN</h2>
+                <br><br>
+                The heart of Luxury Dürümgo beats in its exquisite kitchen, where culinary artistry and precision
+                craftsmanship converge. This is where our master chefs, driven by a passion for perfection, create the
+                magic that graces the tables of our esteemed guests.
+                <br><br>
+                The kitchen is a symphony of stainless steel and gleaming marble, where each detail has been
+                meticulously designed to ensure the highest standards of culinary excellence. State-of-the-art
+                appliances and equipment are the tools of our culinary virtuosos, allowing them to push the boundaries
+                of gastronomic innovation.
+                <br><br>
+                Every dish is a masterpiece in the making, from the meticulous selection of the finest ingredients to
+                the delicate dance of flavors and textures that unfolds on the plate. Our chefs are culinary
+                visionaries, fusing global inspirations with timeless traditions to create a menu that is as diverse as
+                it is delightful.
+                <br><br>
+                Welcome to our kitchen, where innovation and tradition meet, where each plate is a canvas for culinary
+                artistry, and where the highest standards of quality and taste are the driving force behind every
+                creation.<br><br><br>
+                <img src="..\static\img\kitchen.jpg" style="height: 300px; width: 300px; margin-top: 20px;"
+                    class="appear-on-scroll">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 w-75 contact-info">
+        <div class="col-md-4">
+            <img src="..\static\img\columnaFreepik.png" style="height: 1675px;" class="appear-on-scroll">
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="col-12">
+                <p><i class="bi bi-phone custom-icon"></i></p>
+            </div>
+
+
+            <div class="col-12" style="width: 1400px; background-color: #161617; padding: 40px;">
+                <h2>OUR CULINARY MASTERS</h2>
+                <p style="color:#D9D9D9 ;">At Luxury Dürümgo, our culinary team is a gathering of true artisans, each a
+                    maestro in their own right, dedicated to the pursuit of gastronomic perfection. With a deep passion
+                    for the culinary arts, they transform every meal into an exquisite masterpiece that tantalizes the
+                    senses and transcends the ordinary.
+                    <br><br>
+                    Our executive chef, a culinary virtuoso of unparalleled expertise, leads the team with a vision that
+                    marries innovation with tradition. With a rich tapestry of international culinary experiences, our
+                    chefs bring a world of flavors to your plate. Their relentless pursuit of excellence is matched only
+                    by their commitment to crafting unique, unforgettable dishes that tell a story of the extraordinary.
+                    <br><br>
+                    Each member of our culinary team is a luminary in their own realm, from the master of spices who
+                    weaves exotic flavors into every dish to the pastry chef whose sweet creations are a testament to
+                    the artistry of desserts. With a dedication to sourcing the finest ingredients and an unwavering
+                    commitment to precision, they ensure that every dish that leaves the kitchen is a culinary delight.
+                    <br><br>
+                    In our kitchen, culinary traditions are honored and reimagined, and every plate is a canvas for
+                    creativity and innovation. Our chefs work in harmony, transforming simple ingredients into culinary
+                    symphonies that grace your table.
+                    <br><br>
+                    The culinary team at Luxury Dürümgo is not just a group of experts; they are culinary visionaries,
+                    passionate artists, and guardians of the extraordinary. They invite you on a journey of flavors,
+                    where every dish is a reflection of their dedication to the art of gastronomy.
+                    <br><br>
+                    Welcome to Luxury Dürümgo, where our culinary experts turn each meal into an exquisite experience,
+                    and where their passion for culinary excellence ensures that every bite is a celebration of the
+                    senses.
+                </p><br><br><br>
+                <div class="text-center">
+                    <img src="..\static\img\chefs.jpg" style="height: 300px; width: 300px;" class="appear-on-scroll">
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img src="..\static\img\columnaFreepik.png" style="height: 1675px;" class="appear-on-scroll">
+        </div>
+        <footer>
+            <div class="copyright">
+                © Copyright 2023 Luxury Dürümgo
+            </div>
+            <address>
+                <p>Montevideo Etorbidea, 23</p>
+                <p>Durango</p>
+            </address>
+            <div class="social">
+                <img src="../static/img/instagram.png" style="width: 65px; height: 65px;" /> <img
+                    src="../static/img/twitter.png" style="width: 50px; height: 50px;" />
+                <img src="../static/img/facebook.png" style="width: 50px; height: 50px;" />
+            </div>
+        </footer>
+        <script src="../static/js/indexscrpits.js"></script>
+        <script>
+            // Función que verifica si un elemento está en el área visible
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= window.innerHeight && rect.bottom >= 0
+                );
+            }
+
+            // Función para manejar el desplazamiento y mostrar las imágenes
+            function handleScroll() {
+                const images = document.querySelectorAll(".appear-on-scroll");
+                images.forEach(function (image) {
+                    if (isElementInViewport(image)) {
+                        image.classList.add("appeared");
+                    } else {
+                        image.classList.remove("appeared");
+                    }
+                });
+            }
+
+            // Escucha el evento 'scroll' y llama a la función handleScroll
+            window.addEventListener("scroll", handleScroll);
+
+            // Llama a handleScroll una vez al cargar la página
+            handleScroll();
+
+            function handleRightToLeftScroll() {
+        const elements = document.querySelectorAll(".appear-right-to-left");
+        elements.forEach(function (element) {
+            const rect = element.getBoundingClientRect();
+            if (isElementInViewport(element)) {
+                element.classList.add("appeared");
+            } else {
+                element.classList.remove("appeared");
+            }
+        });
+    }
+
+    function handleLeftToRightScroll() {
+        const elements = document.querySelectorAll(".appear-left-to-right");
+        elements.forEach(function (element) {
+            const rect = element.getBoundingClientRect();
+            if (isElementInViewport(element)) {
+                element.classList.add("appeared");
+            } else {
+                element.classList.remove("appeared");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", function () {
+        handleRightToLeftScroll();
+        handleLeftToRightScroll();
+    });
+
+    window.addEventListener("load", function () {
+        handleRightToLeftScroll();
+        handleLeftToRightScroll();
+    });
+        </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -59,8 +59,125 @@
     </nav>
     
 
-    <div class="container mt-5 ">
-    
+    <div class="w-75 mt-5 border checkout px-3">
+        <div class="row">
+            <div class="col-md-8 pl-4 pt-1 cart">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Shopping Cart</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-striped table-dark rounded">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row discount-total border rounded mb-3 mx-1">
+                            <div class="col-md-8">
+                                <div class="discount">
+
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="total">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4 border-left payment">
+                <div class="col-md-12">
+                    <h1>
+                        Payment Info.
+                    </h1>
+                    <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-6 m-auto">
+                                <div class="w-75 checkout-payment-method m-auto text-center">
+                                    <i class="bi bi-credit-card"></i>
+                                    <button type="button" class="checkout-btn">Credit Card</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 m-auto">
+                                <div class="w-75 checkout-payment-method text-center">
+                                    <i class="bi bi-paypal"></i>
+                                    <button type="button" class="checkout-btn">PayPal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <form>
+                            <div class="row">
+                                <!-- name -->
+                                <div class="col-md-12 mb-1">
+                                    <input type="text" class="checkout-form w-100" id="name" placeholder="Name">
+                                </div>
+                    
+                                <!-- city and postal code -->
+                                <div class="col-md-12 mb-1">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input type="text" class="checkout-form w-100" id="city" placeholder="City name">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="checkout-form w-100" id="postal-code" placeholder="Postal Code">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Address -->
+                                <div class="col-md-12 mb-1">
+                                    <input type="text" class="checkout-form" id="address" placeholder="Address">
+                                </div>
+                                <!-- Additional information -->
+                                <div class="col-md-12 mb-1">
+                                    <input type="text" class="checkout-form" id="postal-code" placeholder="Additional information">
+                                </div>
+                                <!-- submit -->
+                                <div class="col-md-12 mb-1">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn checkout-submit">Check Out</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
