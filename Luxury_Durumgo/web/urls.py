@@ -8,7 +8,19 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('register/register_egin/', views.register_egin, name='register_egin'),
     path('contact/', views.contact, name='contact'),
+<<<<<<< Updated upstream
     path('checkout/', views.checkout, name='checkout'),
     path('logout/', views.logout, name='logout'),
 
+=======
+
+
+
+
+
+
+
+
+    path('aboutUs/', views.aboutUs, name='aboutUs'),
+>>>>>>> Stashed changes
 ]
