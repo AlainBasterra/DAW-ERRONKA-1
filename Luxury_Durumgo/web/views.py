@@ -13,7 +13,7 @@ def index(request):
         context = {'izena': izena}
         return render(request, 'index.html', context )
     else:
-        context = {'izena': 'else'}
+        context = {'izena': ''}
         return render(request, 'index.html', context)
 
 def login_index(request):

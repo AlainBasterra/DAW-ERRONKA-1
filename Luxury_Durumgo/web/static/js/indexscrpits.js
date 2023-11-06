@@ -5,25 +5,23 @@ $(document).ready(function () {
     var izena = perfilDiv.getAttribute("data-izena");
 
     if (izena) {
-        perfilDiv.innerHTML("");
         // Si el usuario está logeado, muestra la foto de perfil y el nombre de usuario
         var user = '<li class="nav-item dropdown">';
         user +=
-            '<a class="nav-link dropdown-toggle" href="#"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{izena}} <img src = "../static/img/user.png "> <span class="sr-only">(current)</span></a>';
+            '<a class="nav-link dropdown-toggle" href="#"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ' + izena + ' <img src = "../static/img/user.png "> <span class="sr-only">(current)</span></a>';
         user += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
         user += '<a class="dropdown-item" href="#">Profile</a>';
         user += '<a class="dropdown-item" href="#">Log out</a>';
 
-        perfilDiv.innerHTML(user);
+        perfilDiv.innerHTML = user;
     } else {
-        perfilDiv.innerHTML("");
         var login = '<li class="nav-item"></li>';
-        login += '<a class="nav-link" href="login/">aaaaa</a>';
+        login += '<a class="nav-link" href="login/">Login</a>';
         login += "</li>";
         login += '<li class="nav-item">';
-        login += `<a class="nav-link" href="#">Register</a>`;
+        login += `<a class="nav-link" href="register/">Register</a>`;
         login += "</li>";
-        perfilDiv.innerHTML(login);
+        perfilDiv.innerHTML = login;
     }
 
     $.ajax({
