@@ -6,7 +6,7 @@ from .models import Erabiltzailea
 from django.contrib.auth import login
 
 
-# Create your views here.ç
+# Create your views here.
 def index(request):
     # Recuperar 'izena' y 'id' de la sesión
     izena = request.session.get('izena')
@@ -40,7 +40,7 @@ def login_egin(request):
     try:
         user = Erabiltzailea.objects.get(helbideElektronikoa=post_helbidea, pasahitza=post_pasahitza)
     except Erabiltzailea.DoesNotExist:
-            user = None
+        user = None
 
 
     if user is not None:
