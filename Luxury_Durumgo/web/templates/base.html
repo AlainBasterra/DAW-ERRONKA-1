@@ -46,18 +46,33 @@
 
 
                     {% if user_id %}
-                    <div id="user" data-izena="Haritz">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ izena }}: {{ user_id }}<img
-                                    src="../static/img/user.png "> <span class="sr-only">(current)</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="logout/">Log out</a></div>
-                        </li>
-                    </div>
-                  {% else %}
+                        {% if perfil == 1 %}
+                            <div id="user" data-izena="Haritz">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ izena }}: {{ user_id }}<img
+                                            src="../static/img/user.png "> <span class="sr-only">(current)</span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Profile</a>
+                                        <a class="dropdown-item" href="logout/">Log out</a></div>
+                                </li>
+                            </div>
+                        {% elif perfil == 3 %}
+                        <div id="user" data-izena="Haritz">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ izena }}: {{ user_id }}<img
+                                        src="../static/img/user.png "> <span class="sr-only">(current)</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'addproducts' %}">Add Products</a>
+                                    <a class="dropdown-item" href="logout/">Log out</a></div>
+                            </li>
+                        </div>
+                        {% endif %}
+                    {% else %}
                     <div id="user" data-izena="">
                         <li class="nav-item"></li><a class="nav-link" href="login/">Login</a>
                         <li class="nav-item"><a class="nav-link" href="register/">Register</a></li>

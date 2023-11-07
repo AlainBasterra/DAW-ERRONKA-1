@@ -23,7 +23,7 @@ class Produktua(models.Model):
     izena = models.CharField(max_length=100,blank=False)
     kategoria = models.CharField(max_length=100,blank=False, default="")
     deskripzioa = models.CharField(max_length=500,blank=False)
-    argazkia = models.FilePathField(path="/../static/img")
+    argazkia = models.FilePathField(path="web/static/img/")
     prezioa = models.IntegerField(blank=False)
     stock = models.IntegerField(blank=False)
     pisua = models.IntegerField()

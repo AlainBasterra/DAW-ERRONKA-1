@@ -1,8 +1,11 @@
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 from django.urls import reverse
-from .models import Erabiltzailea
+
+from web.forms import ProduktuaForm
+
+from .models import Erabiltzailea, Produktua
 from django.contrib.auth import login
 
 
@@ -76,3 +79,26 @@ def logout(request):
 
 def aboutUs(request):
     return render(request, 'aboutUs.html')
+
+def addproducts(request):
+    return render(request, 'addproducts.html')
+
+def addproducts_egin(request):
+
+
+    
+    post_izena = request.POST['izena']
+    post_kategoria = request.POST['kategoria']
+    post_deskripzioa = request.POST['deskripzioa']
+    post_argazkia = request.FILES['argazkia']
+    post_prezioa = request.POST['prezioa']
+    post_stock = request.POST['stock']
+    post_pisua = request.POST['pisua']
+    post_vip = request.POST['vip']
+ 
+              # Guarda la imagen en la base de datos
+
+    produktuberria = Produktua(izena = post_izena, kategoria= post_kategoria, deskripzioa= post_deskripzioa, argazkia= post_argazkia, prezioa= post_prezioa, stock = post_stock, pisua= post_pisua, vip = post_vip)
+    produktuberria.save()
+    return HttpResponseRedirect(reverse('index'))  # Redirige a una página de éxito
+   
