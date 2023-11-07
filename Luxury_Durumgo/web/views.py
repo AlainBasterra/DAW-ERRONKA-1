@@ -8,13 +8,21 @@ from django.contrib.auth import login
 
 # Create your views here.ç
 def index(request):
+    # Recuperar 'izena' y 'id' de la sesión
     izena = request.session.get('izena')
-    if izena is not None:
-        context = {'izena': izena}
-        return render(request, 'index.html', context )
-    else:
-        context = {'izena': ''}
-        return render(request, 'index.html', context)
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    
+
+    # Construir el contexto con ambos valores
+    context = {
+        'izena': izena if izena is not None else '',
+        'user_id': user_id if user_id is not None else None,
+        'perfil': perfil if perfil is not None else None
+    }
+
+    # Renderizar la plantilla con el contexto que contiene 'izena' y 'user_id'
+    return render(request, 'index.html', context)
 
 def login_index(request):
     return render(request, 'login.html')
@@ -37,6 +45,8 @@ def login_egin(request):
 
     if user is not None:
         request.session['izena'] = user.izena
+        request.session['id'] = user.id
+        request.session['perfil'] = user.perfil
         return JsonResponse({'success': True, 'redirect_url': reverse('index')})
     else:
         return JsonResponse({'success': False, 'message': 'Usuario o contraseña incorrectos'})

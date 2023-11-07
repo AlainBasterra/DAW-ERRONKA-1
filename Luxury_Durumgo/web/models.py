@@ -15,7 +15,7 @@ class Erabiltzailea(models.Model):
     nan = models.CharField(max_length=9)
     helbideElektronikoa = models.EmailField(max_length=100, blank=False)
     pasahitza = models.CharField(max_length=250, blank=False)
-    perfil = models.IntegerField(default = 1, blank=False)
+    perfil = models.IntegerField(default = 1, blank=False) #1 erabiltzaile orokorra, 2 VIP, 3 Admin
     sortua = models.DateTimeField(auto_now=True)
     
 
