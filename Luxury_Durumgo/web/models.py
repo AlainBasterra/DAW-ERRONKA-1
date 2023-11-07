@@ -22,7 +22,7 @@ class Erabiltzailea(models.Model):
 class Produktua(models.Model):
     izena = models.CharField(max_length=100,blank=False)
     deskripzioa = models.CharField(max_length=500,blank=False)
-    argazkia = models.CharField(max_length=500)
+    argazkia = models.FilePathField(path="/../static/img")
     prezioa = models.IntegerField(blank=False)
     stock = models.IntegerField(blank=False)
     pisua = models.IntegerField()
