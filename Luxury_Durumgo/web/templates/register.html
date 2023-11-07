@@ -8,27 +8,27 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../static/css/loginstyle.css">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="register-form">
-                    <h2 class="text-center">Login</h2>
+                    <h2 class="text-center">Register</h2>
                     <form id="register" action="{% url 'register_egin' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <input name="nan" type="text" class="form-control" placeholder="DNI" required="required">
                         </div>
                         <div class="form-group">
-                            <input name="izena" type="text" class="form-control" placeholder="name" required="required">
+                            <input name="izena" type="text" class="form-control" placeholder="Name" required="required">
                         </div>
                         <div class="form-group">
                             <input name="abizena1" type="text" class="form-control" placeholder="Surname1" required="required">
                         </div>
                         <div class="form-group">
-                            <input name="abizena2" type="text" class="form-control" placeholder="surname2" required="required">
+                            <input name="abizena2" type="text" class="form-control" placeholder="Surname2" required="required">
                         </div>
                         <div class="form-group">
                             <input name="helbideElektronikoa" type="email" class="form-control" placeholder="E-mail" required="required" pattern="[a-zA-Z0-9._%+-]+@gmail.com">
@@ -37,12 +37,9 @@
                             <input name="pasahitza" type="password" class="form-control" placeholder="Password" required="required">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </div>
-                        <div class="clearfix">
-                            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-                            <a href="#" class="float-right">Forgot Password?</a>
-                        </div>
+                        
                     </form>
                 </div>
             </div>

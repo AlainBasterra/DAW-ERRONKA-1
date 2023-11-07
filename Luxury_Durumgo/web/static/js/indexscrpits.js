@@ -51,39 +51,6 @@ $(document).ready(function () {
 });
 
 
-<<<<<<< Updated upstream
-=======
- // Simula si el usuario está logeado o no
- var usuarioLogeado = false;
-
- // Función para mostrar el perfil del usuario
- function mostrarPerfil() {
-    var perfilDiv = document.getElementById('user');
-    perfilDiv.innerHTML = ''; // Limpia cualquier contenido anterior
-
-     if (usuarioLogeado) {
-
-         // Si el usuario está logeado, muestra la foto de perfil y el nombre de usuario
-         var user = '<li class="nav-item dropdown">';
-         user += '<a class="nav-link dropdown-toggle" href="#"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{izena}} <img src = "../static/img/user.png "> <span class="sr-only">(current)</span></a>';
-         user += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-         user += '<a class="dropdown-item" href="#">Profile</a>';
-         user += '<a class="dropdown-item" href="#">Log out</a>';
-
-
-         perfilDiv.appendChild(user);
-     }
-     else{
-        var login = '<li class="nav-item"></li>';
-        login += `<a class="nav-link" href="{% url 'login' %}">Login</a>`;
-        login += '</li>';
-        login += '<li class="nav-item">';
-        login += `<a class="nav-link" href="#">Register</a>`;
-        login += '</li>';
-        perfilDiv.appendChild(login);
-     }
- }
-
  // Función que verifica si un elemento está en el área visible
  function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
@@ -112,4 +79,3 @@ window.addEventListener("scroll", handleScroll);
 
 // Llama a handleScroll una vez al cargar la página
 handleScroll();
->>>>>>> Stashed changes
