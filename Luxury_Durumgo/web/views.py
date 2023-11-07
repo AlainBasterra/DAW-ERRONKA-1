@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.db import connection
 from django.urls import reverse
-from .models import Erabiltzailea
+from .models import Erabiltzailea, Produktua
 from django.contrib.auth import login
 
 
@@ -76,3 +76,20 @@ def logout(request):
 
 def aboutUs(request):
     return render(request, 'aboutUs.html')
+
+def menu(request):
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    
+    produktuak = Produktua.objects.all()
+    
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        'produktuak': produktuak, 
+    }
+
+    
+    return render(request, 'menu.html', context)
