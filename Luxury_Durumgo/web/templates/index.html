@@ -45,14 +45,23 @@
                 <li class="nav-item">
                     <img class="nav-link" src="../static/img/carrito1.png"></img>
                 </li>
-                <div id = "user" data-izena="{{ izena }}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+
+                {% if user_id %}
+                <div id="user" data-izena="Haritz">
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ izena }}: {{ user_id }}<img
+                                src="../static/img/user.png "> <span class="sr-only">(current)</span></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#">Profile</a><a
+                                class="dropdown-item" href="logout/">Log out</a></div>
                     </li>
                 </div>
+              {% else %}
+                <div id="user" data-izena="">
+                    <li class="nav-item"></li><a class="nav-link" href="login/">Login</a>
+                    <li class="nav-item"><a class="nav-link" href="register/">Register</a></li>
+                </div>
+              {% endif %}
+
             </ul>
         </div>
     </nav>

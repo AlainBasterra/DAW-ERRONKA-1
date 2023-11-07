@@ -21,6 +21,7 @@ class Erabiltzailea(models.Model):
 
 class Produktua(models.Model):
     izena = models.CharField(max_length=100,blank=False)
+    kategoria = models.CharField(max_length=100,blank=False, default="")
     deskripzioa = models.CharField(max_length=500,blank=False)
     argazkia = models.FilePathField(path="/../static/img")
     prezioa = models.IntegerField(blank=False)
@@ -33,10 +34,10 @@ class Saskia(models.Model):
      produktua = models.ForeignKey(Produktua, on_delete=models.CASCADE)
      kantitatea = models.IntegerField()
      zenbakia = models.IntegerField()
+     bukatuta = models.IntegerField(default=0)
 
 class Salmenta(models.Model):
     erabiltzailea = models.ForeignKey(Erabiltzailea, on_delete=models.CASCADE, blank=False)
-
     zenbakiaSaskia = models.IntegerField()
     prezioaFinala = models.IntegerField()
     data = models.DateField(auto_now=True)

@@ -6,15 +6,24 @@ from .models import Erabiltzailea
 from django.contrib.auth import login
 
 
-# Create your views here.ç
+# Create your views here.
 def index(request):
     izena = request.session.get('izena')
-    if izena is not None:
-        context = {'izena': izena}
-        return render(request, 'index.html', context )
-    else:
-        context = {'izena': ''}
-        return render(request, 'index.html', context)
+    user_id = request.session.get('id')
+        
+    context = {
+    'izena': izena if izena is not None else '',
+    'user_id': user_id if user_id is not None else None
+    }
+    
+    return render(request, 'index.html', context)
+
+    # if izena is not None:
+    #     context = {'izena': izena}
+    #     return render(request, 'index.html', context )
+    # else:
+    #     context = {'izena': ''}
+    #     return render(request, 'index.html', context)
 
 def login_index(request):
     return render(request, 'login.html')
@@ -32,11 +41,12 @@ def login_egin(request):
     try:
         user = Erabiltzailea.objects.get(helbideElektronikoa=post_helbidea, pasahitza=post_pasahitza)
     except Erabiltzailea.DoesNotExist:
-            user = None
+        user = None
 
 
     if user is not None:
         request.session['izena'] = user.izena
+        request.session['id'] = user.id
         return JsonResponse({'success': True, 'redirect_url': reverse('index')})
     else:
         return JsonResponse({'success': False, 'message': 'Usuario o contraseña incorrectos'})
