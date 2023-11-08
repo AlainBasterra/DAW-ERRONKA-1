@@ -21,8 +21,28 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur diam vel ante porta, sit amet eleifend orci vehicula. Vestibulum et ex pellentesque, gravida magna nec, luctus nulla. Duis ante tellus, lacinia at diam nec, fringilla sagittis ipsum. Donec eros sapien, ultricies a diam id, mattis vulputate sem. Mauris feugiat massa vitae mi sollicitudin, semper ultrices ligula ornare. Praesent consequat justo sit amet urna tincidunt, sed bibendum tortor ornare. Nam nec interdum odio. Nulla facilisi. Mauris vel nibh eu elit auctor auctor. Sed sem orci, consequat ut efficitur in, varius tincidunt arcu. Suspendisse ullamcorper pretium sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent id risus diam. In tristique lectus sit amet neque scelerisque, in efficitur tortor ornare. Phasellus a ultrices lorem, id sollicitudin ante.</p>
     </div>
 
-    <div id="content">
+    <div class="container">
         <h3>Most Popular Products:</h3>
-        
+        <div class="row">
+
+            {% for produktua in produktuak %}
+            <div class="col-md-4 mb-4">
+              <div class="card index-produktua">
+                <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{ produktua.izena }}</h5>
+                  <p class="card-text">{{ produktua.deskripzioa }}</p>
+                  <p class="card-text">{{ produktua.argazkia }}</p>
+                  <p class="card-text">${{ produktua.prezioa }}</p>
+                  <a href="#" class="btn btn-primary"><i class="bi bi-cart"></i></a>
+                </div>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+              </div><div class="row">
+            {% endif %}
+          {% endfor %}
+
+        </div>
     </div>
     {% endblock %}

@@ -12,13 +12,14 @@ def index(request):
     izena = request.session.get('izena')
     user_id = request.session.get('id')
     perfil = request.session.get('perfil')
-    
+    produktuak = Produktua.objects.all().order_by('stock')[:3]
 
     # Construir el contexto con ambos valores
     context = {
         'izena': izena if izena is not None else '',
         'user_id': user_id if user_id is not None else None,
-        'perfil': perfil if perfil is not None else None
+        'perfil': perfil if perfil is not None else None,
+        'produktuak': produktuak
     }
 
     # Renderizar la plantilla con el contexto que contiene 'izena' y 'user_id'
@@ -78,12 +79,19 @@ def aboutUs(request):
     return render(request, 'aboutUs.html')
 
 def addproducts(request):
-    return render(request, 'addproducts.html')
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        
+    }
+    return render(request, 'addproducts.html',context)
 
 def addproducts_egin(request):
 
-
-    
     post_izena = request.POST['izena']
     post_kategoria = request.POST['kategoria']
     post_deskripzioa = request.POST['deskripzioa']
@@ -92,13 +100,12 @@ def addproducts_egin(request):
     post_stock = request.POST['stock']
     post_pisua = request.POST['pisua']
     post_vip = request.POST['vip']
- 
-              # Guarda la imagen en la base de datos
 
     produktuberria = Produktua(izena = post_izena, kategoria= post_kategoria, deskripzioa= post_deskripzioa, argazkia= post_argazkia, prezioa= post_prezioa, stock = post_stock, pisua= post_pisua, vip = post_vip)
     produktuberria.save()
-    return HttpResponseRedirect(reverse('index'))  # Redirige a una página de éxito
-   
+    return HttpResponseRedirect(reverse('index'))
+
+
 def menu(request):
     izena = request.session.get('izena', '')
     user_id = request.session.get('id')
