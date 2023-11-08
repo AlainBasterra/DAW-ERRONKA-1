@@ -90,31 +90,73 @@
         <!-- Menú lateral del carrito -->
         <div id="carrito-menu">
             <div class="carrito-content">
-            <span class="carrito"><i class="bi bi-x-lg"></i> Cerrar</span>
-            <h3>Tu Carrito</h3>
-            <div class="carrito-items">
-                 <!-- Elemento del carrito -->
-                <div class="carrito-item">
-                <img src="" alt="Nombre Producto" class="carrito-item-img">
-                <div class="carrito-item-details">
-                    <h4 class="carrito-item-title">Nombre del Producto</h4>
-                    <p class="carrito-item-price">$19.99</p>
-                    <!-- Cantidad del producto -->
-                    <div class="carrito-item-quantity">
-                    <button class="carrito-item-decrease">-</button>
-                    <input type="number" value="1" class="carrito-item-input">
-                    <button class="carrito-item-increase">+</button>
+                <span class="carrito"><i class="bi bi-x-lg"></i> Cerrar</span>
+                <h3>Tu Carrito</h3>
+                <div class="carrito-items">
+
+                    <!-- Elemento del carrito -->
+
+                    
+                    <div class="carrito-item">
+                        <img src="../static/img/foto4.jpg" alt="Nombre Producto" class="carrito-item-img">
+                        <div class="carrito-item-details">
+                            <h4 class="carrito-item-title">Nombre del Producto</h4>
+                            <p class="carrito-item-price">$19.99</p>
+                            <!-- Cantidad del producto -->
+                            <div class="carrito-item-quantity">
+                                <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
+                                <input type="number" value="1" class="carrito-item-input">
+                                <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
+                                <button class="carrito-item-remove"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <button class="carrito-item-remove">Eliminar</button>
-                </div>
-                </div>
+                    
+
+                    
+                    <div class="carrito-item">
+                        <img src="../static/img/foto4.jpg" alt="Nombre Producto" class="carrito-item-img">
+                        <div class="carrito-item-details">
+                            <h4 class="carrito-item-title">Nombre del Producto</h4>
+                            <p class="carrito-item-price">$19.99</p>
+                            <!-- Cantidad del producto -->
+                            <div class="carrito-item-quantity">
+                                <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
+                                <input type="number" value="1" class="carrito-item-input">
+                                <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
+                                <button class="carrito-item-remove"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="carrito-item">
+                        <img src="../static/img/foto4.jpg" alt="Nombre Producto" class="carrito-item-img">
+                        <div class="carrito-item-details">
+                            <h4 class="carrito-item-title">Nombre del Producto</h4>
+                            <p class="carrito-item-price">$19.99</p>
+                            <!-- Cantidad del producto -->
+                            <div class="carrito-item-quantity">
+                                <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
+                                <input type="number" value="1" class="carrito-item-input">
+                                <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
+                                <button class="carrito-item-remove"><i class="bi bi-x-circle"></i></button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
                 <!-- Repetir por cada producto en el carrito -->
             </div>
             <!-- Resumen del precio total -->
-            <div class="carrito-total">
+            <!-- <div class="carrito-total">
                 <h4>Total</h4>
                 <p class="carrito-total-price">$19.99</p>
-            </div>
+            </div> -->
             <!-- Botón para proceder con la compra -->
             <a href="{% url 'checkout' %}">
                 <button class="carrito-checkout-btn">Checkout</button>
@@ -143,7 +185,7 @@
          
 
 
-           <!--scripts-->
-            <script src="{% static '../static/js/funciones_generales.js' %}"></script> 
+          <!-- scripts -->
+            <script src="{% static '../static/js/funciones_generales.js' %}"></script>
     </body>
 </html>
