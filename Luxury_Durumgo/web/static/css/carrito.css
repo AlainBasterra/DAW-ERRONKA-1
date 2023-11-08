@@ -6,7 +6,8 @@
     top: 0;
     bottom: 0; /* Asegura que el menú se extienda de arriba a abajo */
     overflow-y: auto; /* Permite desplazarse si el contenido es muy largo */
-    background-color: #fff; /* Fondo blanco para el contenido del carrito */
+    background-color: #161617; /* Fondo blanco para el contenido del carrito */
+    color: #FFD95A; /* Color de la letra*/
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
     z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
     transition: right 0.4s ease; /* Animación suave para mostrar/ocultar */
@@ -139,28 +140,70 @@
     background-color: #ff4444;
     color: white;
     border: none;
-    padding: 5px 10px;
-    margin-top: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
   }
   
   .carrito-total {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #555;
   }
   
+
+  .carrito-item-decrease{
+    background-color: #555;
+    color: #FFD95A;
+    border: none;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 8px !important;
+  }
+  .carrito-item-remove{
+    background-color: #161617;
+    font-size:larger;
+    color: #ff0000;
+    border: none;
+    border-radius: 8px;
+    margin-left: auto !important;
+    margin: 5px;
+    padding: 8px !important;
+  }
+  .carrito-item-increase{
+    background-color: #555;
+    color: #FFD95A;
+    border: none;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 8px !important;
+  }
+
   .carrito-total-price {
     font-size: 20px;
   }
   
   .carrito-checkout-btn {
+    text-transform: uppercase;
+    background-color: #FFD95A;
+    color: #161617;
+    font-weight: bold;
     display: block;
     width: 100%;
     padding: 10px;
     margin-top: 20px;
-    background-color: #5cb85c;
-    color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
   }
+
   
+  .carrito-checkout-btn:hover {
+    text-decoration: none;
+    background-color: #555;
+    color: #FFD95A; 
+  }
