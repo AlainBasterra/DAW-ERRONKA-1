@@ -13,6 +13,5 @@ urlpatterns = [
     path('aboutUs/',views.aboutUs, name='aboutUs'),
     path('addproducts/',views.addproducts, name='addproducts'),
     path('addproducts/addproducts_egin/',views.addproducts_egin, name='addproducts_egin'),
-
-
+    path('menu/', views.menu, name='menu'),
 ]

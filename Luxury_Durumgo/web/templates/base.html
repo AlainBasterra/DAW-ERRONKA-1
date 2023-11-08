@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../static/css/carrito.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -12,6 +14,7 @@
         <title>Luxury Dürümgo</title>
     </head>
     <body>
+        <div class="overlay"></div> <!-- Fondo oscuro para el carrito -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <a href ="{% url 'index' %}"><img class="navbar-brand" src="../static/img/LOGO2.png"></img></a>
             
@@ -41,7 +44,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto"> <!-- This will push the login element to the right -->
                     <li class="nav-item">
-                        <img class="nav-link" src="../static/img/carrito1.png"></img>
+                        <img class="nav-link carrito" src="../static/img/carrito1.png"></img>
                     </li>
 
 
@@ -84,6 +87,41 @@
             </div>
         </nav>
 
+        <!-- Menú lateral del carrito -->
+        <div id="carrito-menu">
+            <div class="carrito-content">
+            <span class="carrito"><i class="bi bi-x-lg"></i> Cerrar</span>
+            <h3>Tu Carrito</h3>
+            <div class="carrito-items">
+                <!-- Elemento del carrito -->
+                <div class="carrito-item">
+                <img src="ruta/a/imagen-producto.jpg" alt="Nombre Producto" class="carrito-item-img">
+                <div class="carrito-item-details">
+                    <h4 class="carrito-item-title">Nombre del Producto</h4>
+                    <p class="carrito-item-price">$19.99</p>
+                    <!-- Cantidad del producto -->
+                    <div class="carrito-item-quantity">
+                    <button class="carrito-item-decrease">-</button>
+                    <input type="number" value="1" class="carrito-item-input">
+                    <button class="carrito-item-increase">+</button>
+                    </div>
+                    <button class="carrito-item-remove">Eliminar</button>
+                </div>
+                </div>
+                <!-- Repetir por cada producto en el carrito -->
+            </div>
+            <!-- Resumen del precio total -->
+            <div class="carrito-total">
+                <h4>Total</h4>
+                <p class="carrito-total-price">$19.99</p>
+            </div>
+            <!-- Botón para proceder con la compra -->
+            <a href="{% url 'checkout' %}">
+                <button class="carrito-checkout-btn">Checkout</button>
+            </a>
+            </div>
+        </div>
+        
         {% block content %}
         {% endblock %}
 
@@ -101,5 +139,11 @@
               <img src="../static/img/facebook.png" style="width: 50px; height: 50px;"/>
             </div>
           </footer>
+
+         
+
+
+          <!-- scripts -->
+            <script src="{% static '../static/js/funciones_generales.js' %}"></script>
     </body>
 </html>
