@@ -2,7 +2,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.db import connection
 from django.urls import reverse
-from .models import Erabiltzailea, Produktua
+from .models import Erabiltzailea, Produktua, Saskia
+from django.db.models import Max
 
 
 
@@ -119,6 +120,31 @@ def menu(request):
         'perfil': perfil,
         'produktuak': produktuak, 
     }
-
     
     return render(request, 'menu.html', context)
+
+def add_to_cart(request):
+    if request.method == 'POST' and request.is_ajax():
+        
+        user_id = request.session.get('id')
+        produktu_id = request.POST.get('product_id')
+        kantitatea = request.POST.get('quantity', 1)
+        
+        # produktua = Produktua.objects.get(pk=produktu_id)
+        
+        max_zenbakia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=1).aggregate(Max('zenbakia'))['zenbakia__max']
+
+        # Si no hay ningún carrito finalizado, estableceremos max_zenbakia a 1
+        if max_zenbakia is None:
+            max_zenbakia = 1
+        else:
+            max_zenbakia += 1 
+        
+        saskia, sortua = Saskia.objects.get_or_create(erabiltzailea=request.user_id, zenbakia=max_zenbakia, bukatuta=0)
+        
+        if not sortua:
+            sortua.kantitatea += int(kantitatea)
+        saskia.save()
+
+        return JsonResponse({'items_count': cart_items_count})
+    return JsonResponse({'error': 'Ocurrió un error'}, status=400)
