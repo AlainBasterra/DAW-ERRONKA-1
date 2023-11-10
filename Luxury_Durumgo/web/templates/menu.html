@@ -10,14 +10,15 @@
 
             {% for produktua in produktuak %}
             <div class="col-md-4 mb-4">
-              <div class="card">
+              <div class="card index-produktua">
                 <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
                 <div class="card-body">
                   <h5 class="card-title">{{ produktua.izena }}</h5>
                   <p class="card-text">{{ produktua.deskripzioa }}</p>
                   <p class="card-text">{{ produktua.argazkia }}</p>
                   <p class="card-text">${{ produktua.prezioa }}</p>
-                  <a href="#" class="btn btn-primary">Add to cart <i class="bi bi-cart-plus"></i></a>
+                  <a href="#" class="btn btn-primary" style="    background-color: #FFD95A; border: 1px solid #FFD95A; border-radius: 5px;padding: 10px 20px;font-size: 18px;color: #000000;; transition: background-color 0.3s ease;font-family: 'luxurious roman', serif;   "> <i class="bi bi-cart-plus"></i></a>
+                  
                 </div>
               </div>
             </div>
