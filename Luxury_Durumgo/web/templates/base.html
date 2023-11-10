@@ -153,6 +153,13 @@
 
 
           <!-- scripts -->
-            <script src="{% static '../static/js/funciones_generales.js' %}"></script>
+          <script src="{% static '../static/js/funciones_generales.js' %}">
+        </script>
+
+        <!-- urls -->
+        <script type="text/javascript">
+            var csrf_token = "{{ csrf_token }}";
+            var addToCartUrl = "{% url 'add_to_cart' %}";
+        </script>
     </body>
 </html>

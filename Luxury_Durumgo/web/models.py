@@ -32,7 +32,7 @@ class Produktua(models.Model):
 class Saskia(models.Model):
      erabiltzailea = models.ForeignKey(Erabiltzailea, on_delete=models.CASCADE)
      produktua = models.ForeignKey(Produktua, on_delete=models.CASCADE)
-     kantitatea = models.IntegerField()
+     kantitatea = models.IntegerField(null=True)
      zenbakia = models.IntegerField()
      bukatuta = models.IntegerField(default=0)
 

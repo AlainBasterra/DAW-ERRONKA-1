@@ -13,29 +13,33 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $(".add-to-cart-btn").click(function (e) {
-    e.preventdefault();
+  $(".add-to-cart-btn").click(function () {
     var productId = $(this).data("product-id");
-    var cantidad = 1; // o una cantidad seleccionada por el usuario
+    var kantitatea = 1; // o una cantidad seleccionada por el usuario
+
+    console.log(productId);
+    console.log(kantitatea);
 
     $.ajax({
-      url: "{% url 'add_to_cart' %}",
+      url: addToCartUrl,
       data: {
         product_id: productId,
-        cantidad: cantidad,
-        csrfmiddlewaretoken: "{{ csrf_token }}",
+        kantitatea: kantitatea,
+        csrfmiddlewaretoken: csrf_token,
       },
       type: "POST",
       dataType: "json",
       success: function (data) {
-        if (data.items_count) {
-          // Actualizar la cantidad de ítems en el carrito en el DOM
-          $("#cart-items-count").text(data.items_count);
-        }
+        console.log(data);
+        // if (data.items_count) {
+        //   // Actualizar la cantidad de ítems en el carrito en el DOM
+        //   $("#cart-items-count").text(data.items_count);
+        // }
       },
       error: function (xhr, errmsg, err) {
         console.log(xhr.status + ": " + xhr.responseText);
       },
     });
+
   });
 });

@@ -190,6 +190,22 @@ footer{
     color: #fff;
 }
 
+.btn-add-to-cart {
+    background-color: #FFD95A;
+    border: 1px solid #FFD95A;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #000000;
+    transition: background-color 0.3s ease;
+    font-family: 'luxurious roman', serif;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #000000;
+    color: #FFD95A;
+}
+
 
 /* Para ocultar las flechas de los input de tipo number con clase "carrito-form" */
 .carrito-form[type="number"]::-webkit-inner-spin-button,
