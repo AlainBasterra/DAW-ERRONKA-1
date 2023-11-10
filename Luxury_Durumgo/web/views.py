@@ -30,7 +30,18 @@ def login_index(request):
     return render(request, 'login.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+        # Recuperar 'izena' y 'id' de la sesión
+    izena = request.session.get('izena')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+
+    # Construir el contexto con ambos valores
+    context = {
+        'izena': izena if izena is not None else '',
+        'user_id': user_id if user_id is not None else None,
+        'perfil': perfil if perfil is not None else None,
+    }
+    return render(request, 'contact.html', context)
 
 def checkout(request):
     return render(request, 'checkout.html')
@@ -77,7 +88,18 @@ def logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def aboutUs(request):
-    return render(request, 'aboutUs.html')
+            # Recuperar 'izena' y 'id' de la sesión
+    izena = request.session.get('izena')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+
+    # Construir el contexto con ambos valores
+    context = {
+        'izena': izena if izena is not None else '',
+        'user_id': user_id if user_id is not None else None,
+        'perfil': perfil if perfil is not None else None,
+    }
+    return render(request, 'aboutUs.html', context)
 
 def addproducts(request):
     izena = request.session.get('izena', '')

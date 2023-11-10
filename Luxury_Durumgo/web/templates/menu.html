@@ -12,7 +12,7 @@
               {% if perfil == 3 %}
                 {% for produktua in produktuak %}
                   <div class="col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card index-produktua">
                       <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
                       <div class="card-body">
                         <h5 class="card-title">{{ produktua.izena }}</h5>
@@ -29,25 +29,27 @@
                     </div><div class="row">
                   {% endif %}
                 {% endfor %}
+
+              {% endif %}
+
               {% else %}
-                {% for produktua in produktuak %}
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ produktua.izena }}</h5>
-                        <p class="card-text">{{ produktua.deskripzioa }}</p>
-                        <p class="card-text">{{ produktua.argazkia }}</p>
-                        <p class="card-text">${{ produktua.prezioa }}</p>
-                        <a href="#" class="btn btn-primary">Add to cart <i class="bi bi-cart-plus"></i></a>
-                      </div>
+              {% for produktua in produktuak %}
+                <div class="col-md-4 mb-4">
+                  <div class="card index-produktua">
+                    <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ produktua.izena }}</h5>
+                      <p class="card-text">{{ produktua.deskripzioa }}</p>
+                      <p class="card-text">{{ produktua.argazkia }}</p>
+                      <p class="card-text">${{ produktua.prezioa }}</p>
+                      <a href="#" class="btn btn-primary">Add to cart <i class="bi bi-cart-plus"></i></a>
                     </div>
                   </div>
-                  {% if forloop.counter|divisibleby:3 and not forloop.last %}
-                    </div><div class="row">
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                  </div><div class="row">
+                {% endif %}
+              {% endfor %}
             {% endif %}          
         </div>
       </div>
