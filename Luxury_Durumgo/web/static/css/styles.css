@@ -224,6 +224,16 @@ footer{
   color: #bba55d;
   opacity: 1; /* Firefox reduce la opacidad por defecto */
 }
+.btn-primary{
+    background-color: #FFD95A; /* Color del botón */
+    border: 1px solid #FFD95A;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #000000;; /* Color del texto del botón */
+    transition: background-color 0.3s ease;
+    font-family: "luxurious roman", serif;
+}
 
 /* Para asegurarse de que el input se vea bien en todos los estados */
 .carrito-form[type="number"]:focus {
