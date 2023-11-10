@@ -140,10 +140,12 @@ def add_to_cart(request):
         else:
             max_zenbakia += 1 
         
-        saskia, sortua = Saskia.objects.get_or_create(erabiltzailea=request.user_id, zenbakia=max_zenbakia, bukatuta=0)
+        saskia, sortua = Saskia.objects.get_or_create(erabiltzailea=request.user_id, produktu_id=produktu_id, zenbakia=max_zenbakia, bukatuta=0)
         
-        if not sortua:
-            sortua.kantitatea += int(kantitatea)
+        if not sortua: #get
+            saskia.kantitatea += int(kantitatea)
+        else: #create
+            saskia.kantitatea = int(kantitatea)
         saskia.save()
 
         return JsonResponse({'items_count': cart_items_count})

@@ -191,51 +191,48 @@ footer{
 }
 
 
-/* Para ocultar las flechas de los input de tipo number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+/* Para ocultar las flechas de los input de tipo number con clase "carrito-form" */
+.carrito-form[type="number"]::-webkit-inner-spin-button,
+.carrito-form[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
+.carrito-form[type="number"] {
   -moz-appearance: textfield; /* Firefox */
+  background-color: #333; /* Fondo oscuro */
+  color: gold; /* Texto dorado */
+  border: 1px solid #555; /* Borde ligeramente más claro que el fondo */
+  padding: 5px 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 4px; /* Bordes redondeados */
+
+  /* Personalizaciones adicionales para mejorar la apariencia */
+  font-weight: bold; /* Fuente en negrita para resaltar el color dorado */
+  text-align: center; /* Alinear el texto al centro */
+
+  /* Remover las flechas para navegadores WebKit */
+  -webkit-appearance: none; 
+  margin: 0;
+
+  /* Remover las flechas para Firefox */
+  -moz-appearance: textfield;
+}
+  
+/* Para cambiar el color del placeholder a un dorado más claro si es necesario */
+.carrito-form[type="number"]::placeholder {
+  color: #bba55d;
+  opacity: 1; /* Firefox reduce la opacidad por defecto */
 }
 
-input[type="number"] {
-    background-color: #333; /* Fondo oscuro */
-    color: gold; /* Texto dorado */
-    border: 1px solid #555; /* Borde ligeramente más claro que el fondo */
-    padding: 5px 10px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    border-radius: 4px; /* Bordes redondeados */
-  
-    /* Personalizaciones adicionales para mejorar la apariencia */
-    font-weight: bold; /* Fuente en negrita para resaltar el color dorado */
-    text-align: center; /* Alinear el texto al centro */
-  
-    /* Remover las flechas para navegadores WebKit */
-    -webkit-appearance: none; 
-    margin: 0;
-  
-    /* Remover las flechas para Firefox */
-    -moz-appearance: textfield;
-  }
-  
-  /* Para cambiar el color del placeholder a un dorado más claro si es necesario */
-  input[type="number"]::placeholder {
-    color: #bba55d;
-    opacity: 1; /* Firefox reduce la opacidad por defecto */
-  }
-  
-  /* Para asegurarse de que el input se vea bien en todos los estados */
-  input[type="number"]:focus {
-    outline: none; /* Remover el outline al hacer foco */
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.8); /* Sombra exterior dorada al enfocar */
-  }
-  
-  /* Estilos para navegadores que no son WebKit o Firefox */
-  input[type="number"]::-ms-clear,
-  input[type="number"]::-ms-reveal {
-    display: none;
-  }
+/* Para asegurarse de que el input se vea bien en todos los estados */
+.carrito-form[type="number"]:focus {
+  outline: none; /* Remover el outline al hacer foco */
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.8); /* Sombra exterior dorada al enfocar */
+}
+
+/* Estilos para navegadores que no son WebKit o Firefox */
+.carrito-form[type="number"]::-ms-clear,
+.carrito-form[type="number"]::-ms-reveal {
+  display: none;
+}
