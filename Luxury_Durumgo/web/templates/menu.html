@@ -4,28 +4,51 @@
         <link rel="stylesheet" href="../static/css/styles.css">
     {% endblock %}
     {% block content %}
+
    
     <div class="container">
         <div class="row">
-
-            {% for produktua in produktuak %}
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
-                <div class="card-body">
-                  <h5 class="card-title">{{ produktua.izena }}</h5>
-                  <p class="card-text">{{ produktua.deskripzioa }}</p>
-                  <p class="card-text">{{ produktua.argazkia }}</p>
-                  <p class="card-text">${{ produktua.prezioa }}</p>
-                  <a href="#" class="btn btn-primary">Add to cart <i class="bi bi-cart-plus"></i></a>
-                </div>
-              </div>
-            </div>
-            {% if forloop.counter|divisibleby:3 and not forloop.last %}
-              </div><div class="row">
-            {% endif %}
-          {% endfor %}
-
+          {% if user_id %}
+              {% if perfil == 3 %}
+                {% for produktua in produktuak %}
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ produktua.izena }}</h5>
+                        <p class="card-text">{{ produktua.deskripzioa }}</p>
+                        <p class="card-text">{{ produktua.argazkia }}</p>
+                        <p class="card-text">${{ produktua.prezioa }}</p>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
+                        <a href="{% url 'updateproducts' produktua.id %}" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
+                        <a href="{% url 'deleteproducts' produktua.id %}" class="btn btn-primary"><i class="bi bi-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {% for produktua in produktuak %}
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="../static/img/{{ produktua.argazkia }}" class="card-img-top" alt="{{ produktua.izena }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ produktua.izena }}</h5>
+                        <p class="card-text">{{ produktua.deskripzioa }}</p>
+                        <p class="card-text">{{ produktua.argazkia }}</p>
+                        <p class="card-text">${{ produktua.prezioa }}</p>
+                        <a href="#" class="btn btn-primary">Add to cart <i class="bi bi-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}          
         </div>
       </div>
 

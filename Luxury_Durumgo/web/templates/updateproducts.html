@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block style %}
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/addproductstyle.css">{% endblock %}
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="updateproducts-form">
+                    <h2 class="text-center">Update Products</h2>
+                    <form id="updateproducts" action="{% url 'updateproducts_egin' produktua.id %}" method="post"enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label class="form-label">Name:</label>
+                            <input name="izena" type="text" class="form-control" value = "{{produktua.izena}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category:</label>
+                            <input name="kategoria" type="text" class="form-control" value = "{{produktua.kategoria}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description:</label>
+                            <input name="deskripzioa" type="text" class="form-control" value = "{{produktua.deskripzioa}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Price:</label>
+                            <input name="prezioa" type="number" class="form-control" step="0.01" value = "{{produktua.prezioa}}"  required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stock:</label>
+                            <input name="stock" type="number" class="form-control" value = "{{produktua.stock}}"  required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Weight:</label>
+                            <input name="pisua" type="number" class="form-control" value = "{{produktua.pisua}}"  required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Vip:</label>
+                            <input name="vip" type="number" class="form-control" value = "{{produktua.vip}}"  required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Image:</label>
+                            <input name="argazkia" type="file" class="form-control" value = "{{produktua.argazkia}}"   required="required">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

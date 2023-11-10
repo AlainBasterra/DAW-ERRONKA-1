@@ -148,3 +148,36 @@ def add_to_cart(request):
 
         return JsonResponse({'items_count': cart_items_count})
     return JsonResponse({'error': 'Ocurrió un error'}, status=400)
+
+
+def updateproducts(request,id):
+    produktua = Produktua.objects.get(id = id)
+    return render(request, 'updateproducts.html', {'id':id, 'produktua':produktua})
+
+def updateproducts_egin(request,id):
+    produktua = Produktua.objects.get(id = id)
+    
+    post_izena = request.POST['izena']
+    post_kategoria = request.POST['kategoria']
+    post_deskripzioa = request.POST['deskripzioa']
+    post_argazkia = request.FILES['argazkia']
+    post_prezioa = request.POST['prezioa']
+    post_stock = request.POST['stock']
+    post_pisua = request.POST['pisua']
+    post_vip = request.POST['vip']
+    
+    produktua.izena= post_izena
+    produktua.kategoria = post_kategoria
+    produktua.deskripzioa = post_deskripzioa
+    produktua.argazkia = post_argazkia
+    produktua.prezioa = post_prezioa
+    produktua.stock = post_stock
+    produktua.pisua = post_pisua
+    produktua.vip = post_vip
+    produktua.save()
+    return HttpResponseRedirect(reverse('menu'))
+
+def deleteproducts(request,id):
+    produktua = Produktua.objects.get(id=id)
+    produktua.delete()
+    return HttpResponseRedirect(reverse('menu'))
