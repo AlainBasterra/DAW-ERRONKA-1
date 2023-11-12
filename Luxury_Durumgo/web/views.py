@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.db import connection
@@ -136,19 +137,32 @@ def menu(request):
     
     produktuak = Produktua.objects.all()
     
+    
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None    
+        
     context = {
         'izena': izena,
         'user_id': user_id,
         'perfil': perfil,
         'produktuak': produktuak, 
+        'saskia': saskia 
     }
     
     return render(request, 'menu.html', context)
 
 def add_to_cart(request):
     if request.method == 'POST' and request.is_ajax():
+        if request.session.get('id') is None:
+            data = {
+                'login': 'false'
+            }
+            return JsonResponse(data)
+        else:
+            user_id = int(request.session.get('id'))
         
-        user_id = int(request.session.get('id'))
         produktu_id = int(request.POST.get('product_id'))
         kantitatea = request.POST.get('kantitatea', 1)
         
@@ -177,26 +191,41 @@ def add_to_cart(request):
         'max_zenbakia': max_zenbakia
         }
 
-        # Devolver los datos en formato JSON
-        return JsonResponse(data)
-
-        # # Convertir el objeto Saskia en un diccionario
-        # saskia_dict = model_to_dict(saskia, exclude=['erabiltzailea', 'produktua'])
+        # Convertir el objeto Saskia en un diccionario
+        saskia_dict = model_to_dict(saskia, exclude=['erabiltzailea', 'produktua'])
         
-        # # Añadir el ID del Erabiltzailea manualmente
-        # saskia_dict['erabiltzailea_id'] = saskia.erabiltzailea.id
+        # Añadir el ID del Erabiltzailea manualmente
+        saskia_dict['erabiltzailea_id'] = saskia.erabiltzailea.id
         
-        # # Obtener los detalles del objeto Produktua relacionado
-        # produktua = Produktua.objects.get(pk=produktu_id)
-        # produktua_dict = model_to_dict(produktua)
+        # Obtener los detalles del objeto Produktua relacionado
+        produktua = Produktua.objects.get(pk=produktu_id)
+        produktua_dict = model_to_dict(produktua)
         
-        # # Añadir el diccionario de Produktua al diccionario de Saskia
-        # saskia_dict['produktua'] = produktua_dict
-
-        # # Devolver la respuesta JSON
-        # return JsonResponse({'saskia': saskia_dict})
+        # Añadir el diccionario de Produktua al diccionario de Saskia
+        saskia_dict['produktua'] = produktua_dict
+        saskia_dict['login'] = 'true' 
+        return JsonResponse(saskia_dict)
     return JsonResponse({'error': 'Ocurrió un error'}, status=400)
 
+def set_cart_kantitatea(request):
+    user_id = int(request.session.get('id'))
+    produktu_id = int(request.POST.get('product_id'))
+    kantitatea = request.POST.get('new_quantity')
+    
+    saskia = Saskia.objects.get(erabiltzailea_id=user_id, produktua_id=produktu_id, bukatuta=0)
+    saskia.kantitatea = kantitatea
+    saskia.save()
+        
+    return JsonResponse({'success': True})
+
+def delete_cart_item(request):
+    user_id = int(request.session.get('id'))
+    produktu_id = int(request.POST.get('product_id'))
+    
+    saskia = Saskia.objects.get(erabiltzailea_id=user_id, produktua_id=produktu_id, bukatuta=0)
+    saskia.delete()
+    
+    return JsonResponse({'success': True})
 
 
 def updateproducts(request,id):

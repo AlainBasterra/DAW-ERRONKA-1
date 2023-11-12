@@ -10,7 +10,7 @@ $(document).ready(function () {
             data: $(this).serialize(),
             success: function (data) {
                 if (data.success){
-                    alert("logina ondo dago");
+                    //alert("logina ondo dago");
                     
                     window.location.href = data.redirect_url;
                     

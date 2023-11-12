@@ -80,7 +80,7 @@
                         <li class="nav-item"></li><a class="nav-link" href="{% url 'login' %}">Login</a>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                     </div>
-                  {% endif %}
+                    {% endif %}
 
 
                 </ul>
@@ -95,24 +95,25 @@
                 <div class="carrito-items">
 
                     <!-- Elemento del carrito -->
-
-                    
-                    <div class="carrito-item">
-                        <img src="../static/img/foto4.jpg" alt="Nombre Producto" class="carrito-item-img">
-                        <div class="carrito-item-details">
-                            <h4 class="carrito-item-title">Nombre del Producto</h4>
-                            <p class="carrito-item-price">$19.99</p>
-                            <!-- Cantidad del producto -->
-                            <div class="carrito-item-quantity">
-                                <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
-                                <input type="number" value="1" class="carrito-item-input carrito-form">
-                                <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
-                                <button class="carrito-item-remove"><i class="bi bi-x-circle"></i></button>
+                    {% if user_id and perfil and saskia %}
+                        {% for item in saskia %}
+                        <div class="carrito-item" data-idproduct="{{ item.produktua.id }}">
+                            <img src="../static/img/{{ item.produktua.argazkia }}" alt="{{ item.produktua.izena }}" class="carrito-item-img">
+                            <div class="carrito-item-details">
+                                <h4 class="carrito-item-title">{{ item.produktua.izena }}</h4>
+                                <p class="carrito-item-price">{{ item.produktua.prezioa }}€</p>
+                                <!-- Cantidad del producto -->
+                                <div class="carrito-item-quantity">
+                                    <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
+                                    <input type="number" value="{{ item.kantitatea }}" class="carrito-item-input carrito-form">
+                                    <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
+                                    <button class="carrito-item-remove"><i class="bi bi-x-circle"></i></button>
+                                </div>
+                                
                             </div>
-                            
                         </div>
-                    </div>
-                    
+                        {% endfor %}
+                    {% endif %}
 
                     
                     
@@ -120,10 +121,10 @@
                 <!-- Repetir por cada producto en el carrito -->
             </div>
             <!-- Resumen del precio total -->
-            <!-- <div class="carrito-total">
+            <div class="carrito-total">
                 <h4>Total</h4>
-                <p class="carrito-total-price">$19.99</p>
-            </div> -->
+                <p class="carrito-total-price"></p>
+            </div>
             <!-- Botón para proceder con la compra -->
             <a href="{% url 'checkout' %}">
                 <button class="carrito-checkout-btn">Checkout</button>
