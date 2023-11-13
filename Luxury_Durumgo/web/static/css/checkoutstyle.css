@@ -132,16 +132,16 @@ body {
 }
 
 .carrito-tabla th.producto,
-.carrito-tabla td.producto { width: 30%; }
+.carrito-tabla td.producto { width: 35%; }
 
 .carrito-tabla th.cantidad,
-.carrito-tabla td.cantidad { width: 20%; }
+.carrito-tabla td.cantidad { width: 25%; }
 
 .carrito-tabla th.precio-unitario,
-.carrito-tabla td.precio-unitario { width: 20%; }
+.carrito-tabla td.precio-unitario { width: 15%; }
 
 .carrito-tabla th.subtotal,
-.carrito-tabla td.subtotal { width: 20%; }
+.carrito-tabla td.subtotal { width: 15%; }
 
 .carrito-tabla th.eliminar,
 .carrito-tabla td.eliminar { width: 10%; }
