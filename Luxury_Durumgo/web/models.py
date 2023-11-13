@@ -18,6 +18,7 @@ class Erabiltzailea(models.Model):
     perfil = models.IntegerField(default = 1, blank=False) #1 erabiltzaile orokorra, 2 VIP, 3 Admin
     sortua = models.DateTimeField(auto_now=True)
     
+    
 
 class Produktua(models.Model):
     izena = models.CharField(max_length=100,blank=False)

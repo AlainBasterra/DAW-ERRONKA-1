@@ -20,4 +20,6 @@ urlpatterns = [
     path('updateproducts/<int:id>', views.updateproducts, name='updateproducts'),
     path('updateproducts/updateproducts_egin/<int:id>', views.updateproducts_egin, name='updateproducts_egin'),
     path('deleteproducts/<int:id>', views.deleteproducts, name='deleteproducts'),
+    path('profile/', views.updateprofile, name='profile'),
+    path('profile/updateprofile/<int:id>', views.updateprofile_egin, name='updateprofile'),
 ]

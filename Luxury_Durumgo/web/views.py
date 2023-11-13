@@ -259,3 +259,39 @@ def deleteproducts(request,id):
     produktua = Produktua.objects.get(id=id)
     produktua.delete()
     return HttpResponseRedirect(reverse('menu'))
+
+def updateprofile(request):
+     
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    erabiltzailea = Erabiltzailea.objects.get(id = user_id)
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        'erabiltzailea': erabiltzailea
+    }
+    
+    return render(request, 'profile.html',context)
+
+def updateprofile_egin(request,id):
+    erabiltzailea = Erabiltzailea.objects.get(id = id)
+    
+    post_izena = request.POST['izena']
+    post_abizena1 = request.POST['abizena1']
+    post_abizena2 = request.POST['abizena2']
+    post_nan = request.POST['nan']
+    post_helbideElektronikoa = request.POST['helbideElektronikoa']
+    post_pasahitza = request.POST['pasahitza']
+
+    erabiltzailea.izena = post_izena
+    erabiltzailea.abizena1 = post_abizena1
+    erabiltzailea.abizena2 = post_abizena2
+    erabiltzailea.nan = post_nan
+    erabiltzailea.helbideElektronikoa = post_helbideElektronikoa
+    erabiltzailea.pasahitza = post_pasahitza
+
+    erabiltzailea.save()
+    request.session['izena'] = post_izena
+    return HttpResponseRedirect(reverse('index'))

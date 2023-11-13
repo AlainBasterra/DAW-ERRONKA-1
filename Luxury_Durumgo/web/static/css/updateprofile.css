@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+  
+    min-height: 100vh;
+    
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.profile-form {
+    background-color: #161617;
+    border: 1px solid #FFD95A;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px #FFD95A;
+    padding: 30px;
+    
+}
+
+.profile-form h2 {
+    text-align: center;
+    font-family: "luxurious roman", serif; /* Fuente lujosa */
+    color: #D9D9D9; /* Color del título */
+}
+.form-label{
+    font-family: "luxurious roman", serif; /* Fuente lujosa */
+    color: #D9D9D9; /* Color del título */
+}
+
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-family: "luxurious roman", serif;
+
+}
+
+.btn-primary {
+    background-color: #FFD95A; /* Color del botón */
+    border: 1px solid #FFD95A;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #000000;; /* Color del texto del botón */
+    transition: background-color 0.3s ease;
+    font-family: "luxurious roman", serif;
+}
+
+.btn-primary:hover {
+    background-color: #fffeff; /* Cambio de color al pasar el mouse */
+    color: #000000;
+}
+
+.form-check-label  {
+    margin-right: 5px;
+    color: #D9D9D9;
+    font-family: "luxurious roman", serif;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}

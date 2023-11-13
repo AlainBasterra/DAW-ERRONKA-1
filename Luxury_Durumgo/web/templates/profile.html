@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block style %}
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/updateprofile.css">{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="profile-form">
+                    <h2 class="text-center">Profile</h2>
+                    <form id="profile" action="{% url 'updateprofile' erabiltzailea.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-label">DNI:</label>
+                            <input name="nan" type="text" class="form-control" value="{{erabiltzailea.nan}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">NAME:</label>
+                            <input name="izena" type="text" class="form-control" value="{{erabiltzailea.izena}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">1. SURNAME:</label>
+                            <input name="abizena1" type="text" class="form-control" value="{{erabiltzailea.abizena1}}"required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">2. SURNAME:</label>
+                            <input name="abizena2" type="text" class="form-control" value="{{erabiltzailea.abizena2}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">E-MAIL:</label>
+                            <input name="helbideElektronikoa" type="email" class="form-control" value="{{erabiltzailea.helbideElektronikoa}}" required="required" pattern="[a-zA-Z0-9._%+-]+@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PASSWORD:</label>
+                            <input name="pasahitza" type="password" class="form-control" value="{{erabiltzailea.pasahitza}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
