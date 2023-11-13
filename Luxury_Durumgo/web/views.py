@@ -16,12 +16,19 @@ def index(request):
     perfil = request.session.get('perfil')
     produktuak = Produktua.objects.all().order_by('stock')[:3]
 
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None    
+        
+
     # Construir el contexto con ambos valores
     context = {
         'izena': izena if izena is not None else '',
         'user_id': user_id if user_id is not None else None,
         'perfil': perfil if perfil is not None else None,
-        'produktuak': produktuak
+        'produktuak': produktuak,
+        'saskia': saskia
     }
 
     # Renderizar la plantilla con el contexto que contiene 'izena' y 'user_id'
@@ -36,16 +43,39 @@ def contact(request):
     user_id = request.session.get('id')
     perfil = request.session.get('perfil')
 
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None    
+        
+
     # Construir el contexto con ambos valores
     context = {
         'izena': izena if izena is not None else '',
         'user_id': user_id if user_id is not None else None,
         'perfil': perfil if perfil is not None else None,
+        'saskia': saskia
     }
     return render(request, 'contact.html', context)
 
 def checkout(request):
-    return render(request, 'checkout.html')
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None    
+        
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        'saskia': saskia 
+    }
+    
+    return render(request, 'checkout.html', context)
 
 def login_egin(request):
     

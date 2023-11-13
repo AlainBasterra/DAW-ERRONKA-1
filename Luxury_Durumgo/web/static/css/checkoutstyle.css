@@ -9,20 +9,24 @@ body {
 }
 
 .discount-total{
-    height: 100px;
+    min-height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
+.discount{
+    padding-right: 10px;
+}
 
-
-.cart{
-    
+.total{
+    padding-left: 10px;
+    border-left: 1px solid #D9D9D9;
+    height: 100%;
 }
 
 .payment{
     background-color: #040D12;
-    
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
 }
 
 .checkout-payment-method {
@@ -67,3 +71,77 @@ body {
     color: #161617;
     font-weight: bold;
 }
+
+
+/* Estilo general de la tabla */
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #FFD95A; /* Texto dorado */
+    font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
+}
+
+/* Cabecera de la tabla */
+.carrito-tabla thead {
+    background-color: #333; /* Fondo más oscuro para la cabecera */
+}
+
+.carrito-tabla th, .carrito-tabla td {
+    padding: 10px;
+    border: 1px solid #FFD95A; /* Bordes dorados */
+}
+
+/* Estilos para los botones y entradas */
+.carrito-tabla button {
+    background-color: #FFD95A; /* Botones dorados */
+    color: #1a1a1a; /* Texto oscuro */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-tabla button:hover {
+    background-color: #e6c44d; /* Color dorado ligeramente más claro al pasar el mouse */
+}
+
+.carrito-tabla .carrito-item-input {
+    /* width: 50px; */
+    padding: 5px;
+    border: 1px solid #FFD95A;
+    background-color: #262626; /* Fondo oscuro para las entradas */
+    color: #FFD95A; /* Texto dorado */
+}
+
+/* Alineación del total a la derecha */
+.carrito-total-price {
+    text-align: right;
+}
+
+.carrito-producto-info {
+    display: flex; /* Establece Flexbox */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+    justify-content: flex-start; /* Alinea horizontalmente los elementos al inicio */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.carrito-item-img {
+    max-width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+
+.carrito-tabla th.producto,
+.carrito-tabla td.producto { width: 30%; }
+
+.carrito-tabla th.cantidad,
+.carrito-tabla td.cantidad { width: 20%; }
+
+.carrito-tabla th.precio-unitario,
+.carrito-tabla td.precio-unitario { width: 20%; }
+
+.carrito-tabla th.subtotal,
+.carrito-tabla td.subtotal { width: 20%; }
+
+.carrito-tabla th.eliminar,
+.carrito-tabla td.eliminar { width: 10%; }
