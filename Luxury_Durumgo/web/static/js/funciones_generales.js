@@ -53,7 +53,8 @@ $(document).ready(function () {
             } else {
                 // Si no existe, añade el nuevo elemento al final
                 $('.carrito-items').append(html);
-            }
+            }      
+          actualizarTotalCarrito();
         }
       },
       error: function (xhr, errmsg, err) {
@@ -147,8 +148,72 @@ function actualizarTotalCarrito() {
   $('.carrito-item').each(function() {
       var precio = parseFloat($(this).find('.carrito-item-price').text().replace('€', ''));
       var cantidad = parseInt($(this).find('.carrito-item-input').val());
-      total += precio * cantidad;
+
+      if (isNaN(cantidad) || cantidad < 1) {
+        input.val(1);
+        cantidad = 1;
+    }
+    total += precio * cantidad;  
   });
 
   $('.carrito-total-price').text(total.toFixed(2) + '€');
+}
+
+$(document).ready(function() {
+  $('.carrito-items').on('input', '.carrito-item-input', function() {
+      let valorActual = parseInt($(this).val());
+      console.log(valorActual);
+      if (valorActual < 1) {
+          $(this).val(1);
+      }
+      if (!isNaN(valorActual)) {
+        actualizarTotalCarrito();
+    }
+  });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  calcularSubtotales();
+
+  // Añadir evento para cuando cambia la cantidad
+  document.querySelectorAll('.carrito-item-input').forEach(function(input) {
+      input.addEventListener('input', calcularSubtotales);
+  });
+});
+
+function calcularSubtotales() {
+  document.querySelectorAll('.checkout-item').forEach(function(item) {
+      var precio = parseFloat(item.querySelector('.precio-unitario').textContent.replace('€', ''));
+      var cantidad = parseInt(item.querySelector('.carrito-item-input').value);
+      var subtotal = precio * cantidad;
+      
+      item.querySelector('.subtotal').textContent = subtotal.toFixed(2) + '€';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  calcularTotal();
+
+  // Recalcular el total cuando cambia la cantidad de cualquier producto
+  document.querySelectorAll('.carrito-item-input').forEach(function(input) {
+      input.addEventListener('input', function() {
+          calcularTotal();
+      });
+  });
+});
+
+function calcularTotal() {
+  var total = 0;
+
+  document.querySelectorAll('.checkout-item').forEach(function(item) {
+      var subtotal = parseFloat(item.querySelector('.subtotal').textContent.replace('€', ''));
+      if (!isNaN(subtotal)) {
+          total += subtotal;
+      }
+  });
+
+  document.querySelector('.total h4.text-right').textContent = total.toFixed(2) + '€';
 }

@@ -8,64 +8,54 @@
     {% block content %}
     <div class="w-75 mt-5 border checkout px-3">
         <div class="row">
-            <div class="col-md-8 pl-4 pt-1 cart">
+            <div class="col-xl-7 pl-4 pt-1 cart">
                 <div class="row">
                     <div class="col-md-12">
                         <h1>Shopping Cart</h1>
                     </div>
                     <div class="col-md-12">
-                        <table class="table table-striped table-dark rounded">
+                        <table class="carrito-tabla mb-3">
                             <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                              </tr>
+                                <tr>
+                                    <th class="producto">Producto</th>
+                                    <th class="cantidad">Cantidad</th>
+                                    <th class="precio-unitario">Precio Unitario</th>
+                                    <th class="subtotal">Subtotal</th>
+                                    <th class="eliminar">Eliminar</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                              </tr>
+                            {% if user_id and perfil and saskia %}
+                                {% for item in saskia %}
+                                <tr class="checkout-item" data-idproduct="{{ item.produktua.id }}">
+                                    <td class="producto">
+                                        <div class="carrito-producto-info">
+                                            <img src="../static/img/{{ item.produktua.argazkia }}" alt="{{ item.produktua.izena }}" class="carrito-item-img">
+                                            <span>{{ item.produktua.izena }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="cantidad text-center">
+                                        <button class="carrito-item-decrease"><i class="bi bi-dash-circle"></i></button>
+                                        <input type="number" value="{{ item.kantitatea }}" class="carrito-item-input carrito-form" min="1">
+                                        <button class="carrito-item-increase"><i class="bi bi-plus-circle"></i></button>
+                                    </td>
+                                    <td class="precio-unitario text-center">{{ item.produktua.prezioa }}€</td>
+                                    <td class="subtotal text-center">XXXX€</td>
+                                    <td class="eliminar text-center">
+                                        <button class="carrito-item-remove">Eliminar</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+
                             </tbody>
-                          </table>
+                        </table>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="row discount-total border rounded mb-3 mx-1">
-                            <div class="col-md-8">
-                                <div class="discount">
-
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="total">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
 
-            <div class="col-md-4 border-left payment">
+            <div class="col-xl-5 payment">
                 <div class="col-md-12">
                     <h1>
                         Payment Info.
@@ -97,10 +87,10 @@
                                 <!-- city and postal code -->
                                 <div class="col-md-12 mb-1">
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <input type="text" class="checkout-form w-100" id="city" placeholder="City name">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <input type="text" class="checkout-form w-100" id="postal-code" placeholder="Postal Code">
                                         </div>
                                     </div>
@@ -116,13 +106,37 @@
                                 <!-- submit -->
                                 <div class="col-md-12 mb-1">
                                     <div class="text-right">
-                                        <button type="submit" class="btn checkout-submit">Check Out</button>
+                                        <button type="submit" class="btn checkout-submit">Calculate delivery</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+
+
+                <div class="col-md-12">
+                    <div class="row discount-total border rounded mb-3 mx-1">
+                        <div class="col-md-6">
+                            <div class="discount">
+                                <h4>Discount</h4>
+                                <p>Enter your coupon code if you have one.</p>
+                                <input type="text" class="checkout-form" id="discount" placeholder="Coupon code">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="total d-flex flex-column justify-content-between">
+                                <div>
+                                    <h4>Total</h4>
+                                    <h4 class="text-right">12345€</h4>
+                                </div>
+                                <button type="button" class="btn checkout-submit align-self-end">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
