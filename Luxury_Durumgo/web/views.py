@@ -316,6 +316,28 @@ def menu(request,kategoria):
         }
         return render(request, 'menu.html', context)
     
+    if kategoria == 'Combos':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Combos')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
     
     
     
