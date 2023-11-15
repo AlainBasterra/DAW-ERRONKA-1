@@ -162,29 +162,187 @@ def addproducts_egin(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-def menu(request):
-    izena = request.session.get('izena', '')
-    user_id = request.session.get('id')
-    perfil = request.session.get('perfil')
-    
-    produktuak = Produktua.objects.all()
-    
-    
-    if request.session.get('id') is not None:
-        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
-    else:
-        saskia = None    
+def menu(request,kategoria):
+    if kategoria == 'All':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
         
-    context = {
-        'izena': izena,
-        'user_id': user_id,
-        'perfil': perfil,
-        'produktuak': produktuak, 
-        'saskia': saskia 
-    }
+        produktuak = Produktua.objects.all()
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        
+        return render(request, 'menu.html', context)
     
-    return render(request, 'menu.html', context)
-
+    if kategoria == 'Kebabs':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Kebabs')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Extras':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Extras')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Durums':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Durums')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Pizzas':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Pizzas')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Pedratas':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Pedratas')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Drinks':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Drinks')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    if kategoria == 'Combos':
+        izena = request.session.get('izena', '')
+        user_id = request.session.get('id')
+        perfil = request.session.get('perfil')
+        
+        produktuak = Produktua.objects.filter(kategoria = 'Combos')
+        
+        
+        if request.session.get('id') is not None:
+            saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+        else:
+            saskia = None    
+            
+        context = {
+            'izena': izena,
+            'user_id': user_id,
+            'perfil': perfil,
+            'produktuak': produktuak, 
+            'saskia': saskia 
+        }
+        return render(request, 'menu.html', context)
+    
+    
+    
+    
 def add_to_cart(request):
     if request.method == 'POST' and request.is_ajax():
         if request.session.get('id') is None:

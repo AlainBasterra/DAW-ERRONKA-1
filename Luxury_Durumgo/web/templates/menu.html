@@ -16,8 +16,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ produktua.izena }}</h5>
                         <p class="card-text">{{ produktua.deskripzioa }}</p>
-                        <p class="card-text">{{ produktua.argazkia }}</p>
-                        <p class="card-text">${{ produktua.prezioa }}</p>
+                        <h3>${{ produktua.prezioa }}</h3>
                         <a href="#" class="btn btn-primary"><i class="bi bi-cart-plus"></i></a>
                         <a href="{% url 'updateproducts' produktua.id %}" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
                         <a href="{% url 'deleteproducts' produktua.id %}" class="btn btn-primary"><i class="bi bi-trash"></i></a>
