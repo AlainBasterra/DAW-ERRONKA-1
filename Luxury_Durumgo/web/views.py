@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.db import connection
 from django.urls import reverse
+
+from .static.py.delivery import calcDelivery
 from .models import Erabiltzailea, Produktua, Saskia
 from django.db.models import Max
 
@@ -240,13 +242,31 @@ def add_to_cart(request):
 def set_cart_kantitatea(request):
     user_id = int(request.session.get('id'))
     produktu_id = int(request.POST.get('product_id'))
-    kantitatea = request.POST.get('new_quantity')
+    kantitatea = int(request.POST.get('new_quantity'))
+    
+    if kantitatea < 1:
+        kantitatea = 1
     
     saskia = Saskia.objects.get(erabiltzailea_id=user_id, produktua_id=produktu_id, bukatuta=0)
     saskia.kantitatea = kantitatea
     saskia.save()
         
     return JsonResponse({'success': True})
+
+def calc_delivery(request):
+    if request.method == 'POST':
+        ciudad = request.POST.get('city')
+        codigo_postal = request.POST.get('postal-code')
+        direccion = request.POST.get('address')
+        address = f"{direccion};{codigo_postal};{ciudad}"
+
+        # Luego puedes descomentar y usar tu función calcDelivery
+        result = calcDelivery(address, attempt=0)
+
+        # result = {'data': address}  # Para propósitos de prueba
+        return JsonResponse(result)
+    else:
+        return JsonResponse({'error': 'Solicitud inválida'}, status=400)
 
 def delete_cart_item(request):
     user_id = int(request.session.get('id'))
