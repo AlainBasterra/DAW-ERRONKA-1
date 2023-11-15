@@ -29,15 +29,17 @@
         <p>The service, worthy of the highest category, is a ballet of attention and courtesy, where every detail is orchestrated with precision, ensuring that your visit is memorable in every aspect. The sensory environment, meticulously designed, is the perfect backdrop for this incomparable culinary experience, where luxury and elegance converge in a dance of delight for the senses.</p>
         <br>
         <p><strong>Luxury Dürümgo</strong> is much more than a restaurant; it is a sanctuary of haute cuisine, a place where culinary refinement is elevated to an unmatched level. We invite you to be part of this unique experience, where culinary excellence merges with the beauty of luxury, creating a gastronomic symphony that will captivate your palate and your soul.</p>
+        
       </div>
         
 
     </div>
-
+    
     <div class="container">
-        <h3>Most Popular Products:</h3>
+      <br>
+        <h3 style="text-align: center; font-style: italic;">Most Popular Products</h3>
+        <br>
         <div class="row">
-
             {% for produktua in produktuak %}
             <div class="col-md-4 mb-4">
               <div class="card index-produktua">
@@ -45,8 +47,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ produktua.izena }}</h5>
                   <p class="card-text">{{ produktua.deskripzioa }}</p>
-                  <p class="card-text">{{ produktua.argazkia }}</p>
-                  <p class="card-text">${{ produktua.prezioa }}</p>
+                  <h3>${{ produktua.prezioa }}</h3>
                   <a href="#" class="btn btn-primary" style="    background-color: #FFD95A;border: 1px solid #FFD95A; border-radius: 5px;padding: 10px 20px;font-size: 18px;color: #000000;transition: background-color 0.3s ease;font-family: 'luxurious roman', serif;"><i class="bi bi-cart-plus"></i></a>
                 </div>
               </div>
@@ -55,7 +56,6 @@
               </div><div class="row">
             {% endif %}
           {% endfor %}
-
         </div>
     </div>
     {% endblock %}
