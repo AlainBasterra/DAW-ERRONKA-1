@@ -43,3 +43,9 @@ class Salmenta(models.Model):
     prezioaFinala = models.IntegerField()
     data = models.DateField(auto_now=True)
     helbidea = models.CharField(max_length=1500, default="")
+
+class Deskontua(models.Model):
+    izena = models.CharField(max_length=100,blank=False)
+    kodigoa = models.CharField(max_length=100,blank=False)
+    deskontua = models.CharField(max_length=100,blank=False)
+    

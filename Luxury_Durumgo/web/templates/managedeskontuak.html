@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block style %}
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/updateprofile.css">{% endblock %}
+
+    {% block content %}
+<h1>Kodigoak</h1>
+    <table class="table">
+        <tr>
+            <th>Izena</th>
+            <th>Kodigoa</th>
+            <th>Deskontua</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for deskontua in deskontuak  %}
+        <tr>
+            <td>{{deskontua.izena}}</td>
+            <td>{{deskontua.kodigoa}}</td>
+            <td>{{deskontua.deskontua}}</td>
+            <td><a class="btn btn-danger" href="{% url 'deletedeskontuak' deskontua.id %}">Delete</a></td>
+            <td><a class="btn btn-primary" href="{% url 'updatedeskontuak' deskontua.id %}">Update</a></td>
+        </tr>
+        {% endfor%}
+    </table>
+    <a class="btn btn-success" href="{% url 'adddeskontuak' %}">Add</a>
+    {% endblock %}

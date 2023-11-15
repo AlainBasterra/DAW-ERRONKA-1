@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block style %}
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/addproductstyle.css">{% endblock %}
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="updateproducts-form">
+                    <h2 class="text-center">Update Products</h2>
+                    <form id="updateproducts" action="{% url 'updatedeskontuak_egin' deskontua.id %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label class="form-label">Name:</label>
+                            <input name="izena" type="text" class="form-control" value = "{{deskontua.izena}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Code:</label>
+                            <input name="kodigoa" type="text" class="form-control" value = "{{deskontua.kodigoa}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sale:</label>
+                            <input name="deskontua" type="text" class="form-control" value = "{{deskontua.deskontua}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

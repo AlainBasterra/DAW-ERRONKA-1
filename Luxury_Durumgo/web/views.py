@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.db import connection
 from django.urls import reverse
-from .models import Erabiltzailea, Produktua, Saskia
+from .models import Deskontua, Erabiltzailea, Produktua, Saskia
 from django.db.models import Max
 
 
@@ -325,3 +325,71 @@ def updateprofile_egin(request,id):
     erabiltzailea.save()
     request.session['izena'] = post_izena
     return HttpResponseRedirect(reverse('index'))
+
+def managedeskontuak(request):
+    deskontuak = Deskontua.objects.all()
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        'deskontuak':deskontuak
+     
+    }
+    return render(request, 'managedeskontuak.html',context)
+
+def adddeskontuak(request):
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        
+    }
+    return render(request, 'adddeskontuak.html', context)
+
+def adddeskontuak_egin(request):
+    post_izena = request.POST['izena']
+    post_kodigoa = request.POST['kodigoa']
+    post_deskontua = request.POST['deskontua']
+    
+    deskontuberria = Deskontua(izena = post_izena, kodigoa = post_kodigoa, deskontua = post_deskontua)
+
+    deskontuberria.save()
+    return HttpResponseRedirect(reverse('managedeskontuak'))
+
+def updatedeskontuak(request,id):
+     
+    izena = request.session.get('izena', '')
+    user_id = request.session.get('id')
+    perfil = request.session.get('perfil')
+    deskontua = Deskontua.objects.get(id = id)
+    context = {
+        'izena': izena,
+        'user_id': user_id,
+        'perfil': perfil,
+        'deskontua':deskontua
+    }
+    
+    return render(request, 'updatedeskontuak.html',context)
+
+def updatedeskontuak_egin(request,id):
+    post_izena = request.POST['izena']
+    post_kodigoa = request.POST['kodigoa']
+    post_deskontua = request.POST['deskontua']
+    
+    deskontua = Deskontua.objects.get(id = id)
+    deskontua.izena = post_izena
+    deskontua.kodigoa = post_kodigoa
+    deskontua.deskontua = post_deskontua
+    deskontua.save()
+    return HttpResponseRedirect(reverse('managedeskontuak'))
+
+def deletedeskontuak(request,id):
+    deskontua = Deskontua.objects.get(id=id)
+    deskontua.delete()
+    return HttpResponseRedirect(reverse('managedeskontuak'))

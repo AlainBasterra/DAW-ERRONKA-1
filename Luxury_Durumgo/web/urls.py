@@ -22,4 +22,10 @@ urlpatterns = [
     path('deleteproducts/<int:id>', views.deleteproducts, name='deleteproducts'),
     path('profile/', views.updateprofile, name='profile'),
     path('profile/updateprofile/<int:id>', views.updateprofile_egin, name='updateprofile'),
+    path('managedeskontuak/', views.managedeskontuak, name='managedeskontuak'),
+     path('deletedeskontuak/<int:id>', views.deletedeskontuak, name='deletedeskontuak'),
+    path('adddeskontuak/',views.adddeskontuak, name='adddeskontuak'),
+    path('adddeskontuak/adddeskontuak_egin/',views.adddeskontuak_egin, name='adddeskontuak_egin'),
+    path('updatedeskontuak/<int:id>', views.updatedeskontuak, name='updatedeskontuak'),
+    path('updatedeskontuak/updatedeskontuak_egin/<int:id>', views.updatedeskontuak_egin, name='updatedeskontuak_egin'),
 ]
