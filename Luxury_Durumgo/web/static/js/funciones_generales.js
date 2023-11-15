@@ -13,13 +13,23 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+
   $(".add-to-cart-btn").click(function () {
+
+    
+      var checkIcon = $(this).siblings('.bi-check'); // Encuentra el ícono de verificación hermano
+      checkIcon.removeClass('d-none'); // Muestra el ícono
+
+      setTimeout(function() {
+          checkIcon.addClass('d-none'); // Oculta el ícono después de 2 segundos
+      }, 2000); // 2000 milisegundos = 2 segundos
+
     var productId = $(this).data("product-id");
     var kantitatea = 1; // o una cantidad seleccionada por el usuario
 
     console.log(productId);
     console.log(kantitatea);
-
+    
     $.ajax({
       url: addToCartUrl,
       data: {
