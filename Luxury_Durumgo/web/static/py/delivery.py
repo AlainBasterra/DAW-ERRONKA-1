@@ -58,20 +58,25 @@ def calcDelivery(address, attempt):
     print("Duration:", duration)
     
     
-    if distance < 120000:
+    if distance < 6000000:
         error = False
         print("Delivery is possible")
         if distance < 1000:
             print("price: 10€")
+            return {
+            'distance': distance,
+            'duration': duration,
+            'price': '10€',
+            'error': 'False'
+            }
         else:
             print("price:" + "{:.2f}".format(distance / 100) + "€")
-            
-        return {
-        'distance': distance,
-        'duration': duration,
-        'price': "{:.2f}".format(distance / 100) + '€',
-        'error': 'False'
-        }       
+            return {
+            'distance': distance,
+            'duration': duration,
+            'price': "{:.2f}".format(distance / 100) + '€',
+            'error': 'False'
+            }       
                 
             
     else:

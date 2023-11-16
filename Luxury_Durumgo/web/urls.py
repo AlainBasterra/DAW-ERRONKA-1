@@ -18,6 +18,7 @@ urlpatterns = [
     path('set_cart_kantitatea/', views.set_cart_kantitatea, name='set_cart_kantitatea'),
     path('delete_cart_item/', views.delete_cart_item, name='delete_cart_item'),
     path('calc_delivery/', views.calc_delivery, name='calc_delivery'),
+    path('calc_discount/', views.calc_discount, name='calc_discount'),
     path('updateproducts/<int:id>', views.updateproducts, name='updateproducts'),
     path('updateproducts/updateproducts_egin/<int:id>', views.updateproducts_egin, name='updateproducts_egin'),
     path('deleteproducts/<int:id>', views.deleteproducts, name='deleteproducts'),

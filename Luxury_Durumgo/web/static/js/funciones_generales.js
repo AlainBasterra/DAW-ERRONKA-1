@@ -373,3 +373,33 @@ $(document).ready(function() {
     });
   });
 });
+
+//CALCULAR PRECIO DESCUENTO
+$(document).ready(function() {
+  $('#discount-form').on('submit', function(e) {
+      e.preventDefault(); // Prevenir el envío normal del formulario
+
+    $.ajax({
+        url: '/calc_discount/',
+        method: 'POST',
+        data: $(this).serialize() + '&csrfmiddlewaretoken=' + csrf_token,
+        success: function(response) {
+          if (response.error && response.error === 'False') {
+            alert('trueeee');
+              $('.discont-amount').text(response.price);
+
+              // Calcula y actualiza el total
+              var totalProductos = calcularTotal();
+              var precioEnvio = parseFloat(response.price.replace('€', '').trim());
+              var total = totalProductos + precioEnvio;
+              $('.p-total').text(total.toFixed(2) + '€');
+          } else {
+            alert('Discount code is not valid');
+          }
+      },
+        error: function() {
+          alert('Discount code is not valid');
+        }
+    });
+  });
+});

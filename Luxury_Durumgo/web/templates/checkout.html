@@ -70,14 +70,21 @@
                             <div class="col-md-6 m-auto">
                                 <div class="w-75 checkout-payment-method m-auto text-center">
                                     <i class="bi bi-credit-card"></i>
-                                    <button type="button" class="checkout-btn">Credit Card</button>
+
+                                    <button type="button" class="checkout-btn" data-toggle="modal" data-target="#exampleModal">
+                                        Credit Card
+                                      </button>
+
                                 </div>
                             </div>
                             <div class="col-md-6 m-auto">
                                 <div class="w-75 checkout-payment-method text-center">
                                     <i class="bi bi-paypal"></i>
-                                    <button type="button" class="checkout-btn">PayPal</button>
+                                    <button type="button" class="checkout-btn" data-toggle="modal" data-target="#paypalModal">
+                                        PayPal
+                                      </button>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -86,33 +93,33 @@
                             <div class="row">
                                 <!-- name -->
                                 <div class="col-md-12 mb-1">
-                                    <input type="text" class="checkout-form w-100" id="name" name="name" placeholder="Name">
+                                    <input type="text" class="checkout-form w-100" id="name" name="name" placeholder="Name" required>
                                 </div>
                     
                                 <!-- city and postal code -->
                                 <div class="col-md-12 mb-1">
                                     <div class="row">
                                         <div class="col-md-7">
-                                            <input type="text" class="checkout-form w-100" id="city" name="city" placeholder="City name">
+                                            <input type="text" class="checkout-form w-100" id="city" name="city" placeholder="City name" required>
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="checkout-form w-100" id="postal-code" name="postal-code" placeholder="Postal Code">
+                                            <input type="text" class="checkout-form w-100" id="postal-code" name="postal-code" placeholder="Postal Code" required>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Address -->
                                 <div class="col-md-12 mb-1">
-                                    <input type="text" class="checkout-form" id="address" name="address" placeholder="Address">
+                                    <input type="text" class="checkout-form" id="address" name="address" placeholder="Address" required>
                                 </div>
                                 <!-- Additional information -->
                                 <div class="col-md-12 mb-1">
-                                    <input type="text" class="checkout-form" id="postal-code" name="additional-information" placeholder="Additional information">
+                                    <input type="text" class="checkout-form" id="additionalInfo" name="additional-information" placeholder="Additional information">
                                 </div>
                                 <!-- submit -->
                                 <div class="col-md-12 mb-2 mt-1">
                                     <div class="d-flex justify-content-end align-items-center">
                                         <div class="spinner-border text-light d-none" role="status"></div>
-                                        <button type="submit" class="btn checkout-submit ml-2">Calculate delivery</button>
+                                        <button type="submit" class="btn checkout-submit ml-2 w-50">Calculate delivery</button>
                                     </div>
                                 </div>
                             </div>
@@ -123,44 +130,61 @@
 
                 <div class="col-md-12">
                     <div class="row discount-total border rounded mb-3 mx-1">
+
                         <div class="col-md-6">
-                            <div class="discount">
-                                <h4>Discount</h4>
-                                <p>Enter your coupon code if you have one.</p>
-                                <input type="text" class="checkout-form" id="discount" placeholder="Coupon code">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Discount</h4>
+                                    <p>Enter your coupon code if you have one.</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <form id="discount-form">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <input type="text" class="checkout-form ml-3" id="discount" name="discount" placeholder="Coupon code">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn checkout-submit ml-2"><i class="bi bi-plus-square"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="total pl-3">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-7"><h6>Products:</h6></div>
-                                            <div class="col-5"><h6 class="products-subtotal">XXXX€</h6></div>
+                                            <div class="col-5"><h6 class="products-subtotal">--</h6></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-7"><h6>Delivery fee:</h6></div>
-                                            <div class="col-5"><h6 class="delivery-fee">XXXX€</h6></div>
+                                            <div class="col-5"><h6 class="delivery-fee">--</h6></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-7"><h6>Discount:</h6></div>
-                                            <div class="col-5"><h6>XXXX€</h6></div>
+                                            <div class="col-5"><h6 class="discont-amount">--</h6></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-5"><h5>Total:</h5></div>
-                                            <div class="col-7 text-right"><h5 class="p-total">XXXX€</h5></div>
+                                            <div class="col-7 text-right"><h5 class="p-total">--</h5></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-5"></div>
-                                            <div class="col-7"><button type="button" class="btn checkout-submit">Checkout</button></div>
+                                            <div class="col-7"><button type="button" class="btn checkout-submit"><strong style="font-size: 18px">Checkout</strong></button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -174,5 +198,94 @@
             </div>
         </div>
     </div>
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal Card -->
+  <div class="modal fade modal-custom" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container mt-4">
+                <h2>Información de Tarjeta de Crédito</h2>
+                <form>
+                    <!-- Número de Tarjeta -->
+                    <div class="form-group">
+                        <label for="cardNumber">Número de Tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber" placeholder="Número de Tarjeta" required>
+                    </div>
+            
+                    <!-- Fecha de Vencimiento -->
+                    <div class="form-group">
+                        <label for="expirationDate">Fecha de Vencimiento</label>
+                        <input type="text" class="form-control" id="expirationDate" placeholder="MM/AA" required>
+                    </div>
+            
+                    <!-- CVV -->
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                    </div>
+            
+                    <!-- Nombre del Titular -->
+                    <div class="form-group">
+                        <label for="cardHolderName">Nombre del Titular</label>
+                        <input type="text" class="form-control" id="cardHolderName" placeholder="Nombre del Titular" required>
+                    </div>
+            
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Paypal-->
+  <div class="modal fade modal-custom" id="paypalModal" tabindex="-1" aria-labelledby="paypalModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paypalModalLabel">Información de Cuenta PayPal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container mt-4">
+                    <form>
+                        <!-- Correo Electrónico Asociado a PayPal -->
+                        <div class="form-group">
+                            <label for="paypalEmail">Correo Electrónico de PayPal</label>
+                            <input type="email" class="form-control" id="paypalEmail" placeholder="Correo Electrónico" required>
+                        </div>
+
+                        <!-- Contraseña de PayPal -->
+                        <div class="form-group">
+                            <label for="paypalPassword">Contraseña de PayPal</label>
+                            <input type="password" class="form-control" id="paypalPassword" placeholder="Contraseña" required>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vincular Cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
     <script src="../static/js/indexscrpits.js"></script>
     {% endblock %}

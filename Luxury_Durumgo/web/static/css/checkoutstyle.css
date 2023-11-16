@@ -67,6 +67,8 @@ body {
 }
 
 .checkout-submit {
+    height: 100%;
+    width: 100%;
     background-color: #FFD95A;
     color: #161617;
     font-weight: bold;
@@ -128,7 +130,7 @@ body {
 
 .carrito-item-img {
     max-width: 100px; /* Ajusta el tamaño según sea necesario */
-    height: auto;
+    height: 100px;
 }
 
 .carrito-tabla th.producto,
@@ -145,3 +147,21 @@ body {
 
 .carrito-tabla th.eliminar,
 .carrito-tabla td.eliminar { width: 10%; }
+
+
+.modal-custom .modal-content {
+    background-color: #222; /* Fondo oscuro */
+    color: #fff; /* Letras blancas */
+}
+.modal-custom .modal-header,
+.modal-custom .modal-footer {
+    border-color: #444; /* Borde más claro para header y footer */
+}
+.modal-custom .form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+.modal-custom .form-control::placeholder {
+    color: #999;
+}

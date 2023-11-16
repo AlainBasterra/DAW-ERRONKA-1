@@ -425,6 +425,22 @@ def calc_delivery(request):
         return JsonResponse(result)
     else:
         return JsonResponse({'error': 'Solicitud inválida'}, status=400)
+    
+def calc_discount(request):
+    if request.method == 'POST':
+        code = request.POST.get('discount')
+    try:
+        deskontua_obj = Deskontua.objects.get(kodigoa=code)
+        data = {
+            'izena': deskontua_obj.izena,
+            'kodigoa': deskontua_obj.kodigoa,
+            'deskontua': deskontua_obj.deskontua,
+            'error': 'False'
+        }
+        return JsonResponse(data)
+    except Deskontua.DoesNotExist:
+        return JsonResponse({'error': 'true'})
+
 
 def delete_cart_item(request):
     user_id = int(request.session.get('id'))
@@ -461,12 +477,13 @@ def updateproducts_egin(request,id):
     produktua.pisua = post_pisua
     produktua.vip = post_vip
     produktua.save()
-    return HttpResponseRedirect(reverse('menu'))
+    return HttpResponseRedirect(reverse('menu', args=(post_kategoria,)))
 
 def deleteproducts(request,id):
     produktua = Produktua.objects.get(id=id)
     produktua.delete()
-    return HttpResponseRedirect(reverse('menu'))
+    dena = 'All'
+    return HttpResponseRedirect(reverse('menu', args=(dena,)))
 
 def updateprofile(request):
      
