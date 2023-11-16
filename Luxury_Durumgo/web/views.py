@@ -439,7 +439,7 @@ def calc_discount(request):
         }
         return JsonResponse(data)
     except Deskontua.DoesNotExist:
-        return JsonResponse({'error': 'true'})
+        return JsonResponse({'error': 'True'})
 
 
 def delete_cart_item(request):

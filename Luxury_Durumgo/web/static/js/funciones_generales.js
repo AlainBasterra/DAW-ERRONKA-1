@@ -192,6 +192,8 @@ $(document).ready(function() {
 });
 
 function calcularSubtotales() {
+  
+  $('.discont-amount').text("--");
   var totalProductos = 0;
 
   document.querySelectorAll('.checkout-item').forEach(function(item) {
@@ -242,15 +244,36 @@ function calcularSubtotales() {
 }
 
 function calcularTotal() {
-  var total = 0;
+  var totalProductos = 0;
   document.querySelectorAll('.checkout-item').forEach(function(item) {
       var subtotal = parseFloat(item.querySelector('.subtotal').textContent.replace('€', ''));
       if (!isNaN(subtotal) && subtotal > 0) {
-          total += subtotal;
+          totalProductos += subtotal;
       }
   });
+
+  var precioEnvioTexto = document.querySelector('.delivery-fee').textContent;
+  var precioEnvioNumerico = parseFloat(precioEnvioTexto.replace('€', ''));
+  
+  var precioEnvio = !isNaN(precioEnvioNumerico) ? precioEnvioNumerico : 0;
+
+  var descuentoTexto = document.querySelector('.discont-amount').textContent;
+  var valorDescuento = 0;
+  if (descuentoTexto !== '--') {
+      if (descuentoTexto.includes('%')) {
+          var porcentajeDescuento = parseFloat(descuentoTexto.replace('%', ''));
+          valorDescuento = totalProductos * (porcentajeDescuento / 100);
+      } else if (descuentoTexto.includes('€')) {
+          valorDescuento = parseFloat(descuentoTexto.replace('€', ''));
+      }
+  }
+
+  if (isNaN(valorDescuento)) {
+      valorDescuento = 0;
+  }
+
+  var total = (totalProductos + precioEnvio) - valorDescuento;
   document.querySelector('.p-total').textContent = total.toFixed(2) + '€';
-  return total;
 }
 
 // Eventos DOMContentLoaded
@@ -266,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // SUMAR, RESTAR Y ELIMINAR EN EL CHECKOUT
 document.addEventListener('DOMContentLoaded', function() {
+  $('.discont-amount').text("--");
   // Para aumentar la cantidad
   $('.checkout-item').on('click', '.carrito-item-increase', function() {
         let input = this.parentElement.querySelector('.carrito-item-input');
@@ -289,9 +313,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         calcularSubtotales();
+        
     });
   // Para disminuir la cantidad
   $('.checkout-item').on('click', '.carrito-item-decrease', function() {
+    $('.discont-amount').text("--");
     let input = this.parentElement.querySelector('.carrito-item-input');
     if (input.value > 1) {
         let newQuantity = parseInt(input.value) - 1;
@@ -319,6 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
   $('.checkout-item').on('click', '.carrito-item-remove', function() {
+    $('.discont-amount').text("--");
       // Obtener el ID del producto
       let productId = this.closest('.checkout-item').getAttribute('data-idproduct');
       // Hacer la solicitud AJAX
@@ -345,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
   $('#delivery-form').on('submit', function(e) {
       e.preventDefault(); // Prevenir el envío normal del formulario
-
+      $('.discont-amount').text("--");
       // Mostrar el spinner
       $('.spinner-border').removeClass('d-none');
 
@@ -357,27 +384,45 @@ $(document).ready(function() {
           if (response.error && response.error === 'False') {
               // Actualiza el precio de envío
               $('.delivery-fee').text(response.price);
-
+              calcularTotal();
               // Calcula y actualiza el total
-              var totalProductos = calcularTotal();
-              var precioEnvio = parseFloat(response.price.replace('€', '').trim());
-              var total = totalProductos + precioEnvio;
-              $('.p-total').text(total.toFixed(2) + '€');
+              // var totalProductos = calcularTotal();
+              // var precioEnvio = parseFloat(response.price.replace('€', '').trim());
+              // var total = totalProductos + precioEnvio;
+              // $('.p-total').text(total.toFixed(2) + '€');
+          } else {
+            alert("Delivery address is not valid or too far away");
           }
   
           $('.spinner-border').addClass('d-none'); // Oculta el spinner
       },
         error: function() {
+            alert("Delivery address is not valid or too far away. Max distance: 6000km");
             $('.spinner-border').addClass('d-none');
         }
     });
+    
+  
   });
 });
 
-//CALCULAR PRECIO DESCUENTO
 $(document).ready(function() {
   $('#discount-form').on('submit', function(e) {
       e.preventDefault(); // Prevenir el envío normal del formulario
+
+      
+      var descuentoTexto = document.querySelector('.discont-amount').textContent;
+      if(descuentoTexto != "--") {
+        alert('A discount has already been applied');
+        return;
+      }
+
+      var deliveryPrice = $('.delivery-fee').text();
+      if(deliveryPrice == '--') {
+        alert('First calculate the delivery price');
+        return;
+      }
+
 
     $.ajax({
         url: '/calc_discount/',
@@ -385,21 +430,32 @@ $(document).ready(function() {
         data: $(this).serialize() + '&csrfmiddlewaretoken=' + csrf_token,
         success: function(response) {
           if (response.error && response.error === 'False') {
-            alert('trueeee');
-              $('.discont-amount').text(response.price);
+            $('.discont-amount').text(response.deskontua);
+              // Comprobar si el descuento es un porcentaje o un valor fijo
+              var totalOriginal = parseFloat($('.p-total').text().replace('€', '').trim());
+              var descuento = 0;
+              if(response.deskontua.includes('%')) {
+                  var porcentajeDescuento = parseFloat(response.deskontua.replace('%', '').trim());
+                  descuento = totalOriginal * (porcentajeDescuento / 100);
+              } else {
+                  descuento = parseFloat(response.deskontua.replace('€', '').trim());
+              }
 
-              // Calcula y actualiza el total
-              var totalProductos = calcularTotal();
-              var precioEnvio = parseFloat(response.price.replace('€', '').trim());
-              var total = totalProductos + precioEnvio;
-              $('.p-total').text(total.toFixed(2) + '€');
-          } else {
-            alert('Discount code is not valid');
+              // Aplicar el descuento al total original
+              var totalConDescuento = totalOriginal - descuento;
+
+              // Actualizar el total en la interfaz de usuario
+              $('.p-total').text(totalConDescuento.toFixed(2) + '€');
+              descuentoAplicado = true;
+          } else if (response.error && response.error === 'True') {
+              alert('Discount code is not valid');
           }
       },
         error: function() {
           alert('Discount code is not valid');
         }
     });
-  });
+    
+  
+  });calcularTotal();
 });
