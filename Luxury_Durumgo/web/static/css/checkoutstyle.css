@@ -1,5 +1,5 @@
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "luxurious roman", serif;
 }
 
 .checkout {
@@ -62,7 +62,7 @@ body {
 
 .checkout-form::placeholder {
     color: #555;
-    font-family: Arial, sans-serif;
+    font-family: "luxurious roman", serif;
     font-size: 14px;
 }
 
@@ -79,7 +79,7 @@ body {
     border-collapse: collapse;
     background-color: #1a1a1a; /* Fondo oscuro */
     color: #FFD95A; /* Texto dorado */
-    font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
+    font-family: "luxurious roman", serif;
 }
 
 /* Cabecera de la tabla */
