@@ -256,3 +256,10 @@ footer{
 .carrito-form[type="number"]::-ms-reveal {
   display: none;
 }
+
+.product-acordeon-header-btn{
+    color: #D9D9D9;
+    background-color: #222;
+    /* background-color: #000000; */
+    border: none;
+}
