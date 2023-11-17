@@ -459,3 +459,44 @@ $(document).ready(function() {
   
   });calcularTotal();
 });
+
+
+//CALCULAR PRECIO DELIVERY
+$(document).ready(function() {
+  $('.end-checkout-btn').on('click', function(e) {
+      e.preventDefault();
+      var total = document.querySelector('.p-total').textContent;
+      var name = document.querySelector('#name').value;
+      var city = document.querySelector('#city').value;
+      var postal_code = document.querySelector('#postal-code').value;
+      var address = document.querySelector('#address').value;
+      var additionalInfo = document.querySelector('#additionalInfo').value;
+
+    $.ajax({
+        url: '/end_checkout/',
+        method: 'POST',
+        data: {
+          total: total,
+          name: name,
+          city: city,
+          postal_code: postal_code,
+          address: address,
+          additionalInfo: additionalInfo,
+          csrfmiddlewaretoken: csrf_token,
+        },
+        success: function(response) {
+          console.log(response);
+          if (response.error && response.error === 'False') {
+            alert('Order completed successfully');
+            window.location.href = "/"; // Redirigir a la página de inicio
+          } else {
+            alert('Error completing order');
+          }
+      },
+        error: function() {
+        }
+    });
+    
+  
+  });
+});

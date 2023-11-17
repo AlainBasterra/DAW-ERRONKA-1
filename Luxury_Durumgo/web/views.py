@@ -1,9 +1,9 @@
 from django.forms import model_to_dict
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.db import connection
 from django.urls import reverse
-from .models import Deskontua, Erabiltzailea, Produktua, Saskia
+from .models import Deskontua, Erabiltzailea, Produktua, Saskia, Salmenta
 
 from .static.py.delivery import calcDelivery
 from django.db.models import Max
@@ -440,6 +440,49 @@ def calc_discount(request):
         return JsonResponse(data)
     except Deskontua.DoesNotExist:
         return JsonResponse({'error': 'True'})
+    
+def end_checkout(request):
+    if request.method == 'POST':
+        if request.session.get('id') is None:
+            return JsonResponse({'login': 'false'})
+
+        user_id = int(request.session.get('id'))
+
+        # Obtener datos del POST
+        total = request.POST.get('total')
+        name = request.POST.get('name')
+        city = request.POST.get('city')
+        postal_code = request.POST.get('postal_code')
+        address = request.POST.get('address')
+        additionalInfo = request.POST.get('additionalInfo')
+
+        # Obtener objetos Saskia
+        saskiak = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0)
+
+        if not saskiak.exists():
+            return JsonResponse({'error': 'No se encontraron productos en la cesta'}, status=400)
+
+        # Obtener el valor zenbakia de los objetos Saskia
+        zenbakia = saskiak.first().zenbakia
+
+        # Concatenar los datos de la dirección
+        helbidea = '; '.join([name, city, postal_code, address, additionalInfo])
+
+        # Crear un nuevo objeto Salmenta
+        erabiltzailea = get_object_or_404(Erabiltzailea, pk=user_id)
+        Salmenta.objects.create(
+            erabiltzailea=erabiltzailea,
+            zenbakiaSaskia=zenbakia,
+            prezioaFinala=total,
+            helbidea=helbidea
+        )
+
+        # Actualizar objetos Saskia como finalizados (bukatuta=1)
+        saskiak.update(bukatuta=1)
+
+        return JsonResponse({'error': 'False'})
+
+    return JsonResponse({'error': 'Ocurrió un error'}, status=400)
 
 
 def delete_cart_item(request):

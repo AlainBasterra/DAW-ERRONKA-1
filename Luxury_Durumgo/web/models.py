@@ -40,7 +40,7 @@ class Saskia(models.Model):
 class Salmenta(models.Model):
     erabiltzailea = models.ForeignKey(Erabiltzailea, on_delete=models.CASCADE, blank=False)
     zenbakiaSaskia = models.IntegerField()
-    prezioaFinala = models.IntegerField()
+    prezioaFinala = models.CharField(max_length=100,blank=False)
     data = models.DateField(auto_now=True)
     helbidea = models.CharField(max_length=1500, default="")
 
