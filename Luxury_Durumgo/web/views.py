@@ -125,12 +125,19 @@ def aboutUs(request):
     izena = request.session.get('izena')
     user_id = request.session.get('id')
     perfil = request.session.get('perfil')
+    
+    
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None    
 
     # Construir el contexto con ambos valores
     context = {
         'izena': izena if izena is not None else '',
         'user_id': user_id if user_id is not None else None,
         'perfil': perfil if perfil is not None else None,
+        'saskia': saskia 
     }
     return render(request, 'aboutUs.html', context)
 
@@ -138,10 +145,17 @@ def addproducts(request):
     izena = request.session.get('izena', '')
     user_id = request.session.get('id')
     perfil = request.session.get('perfil')
+    
+    if request.session.get('id') is not None:
+        saskia = Saskia.objects.filter(erabiltzailea=user_id, bukatuta=0).select_related('produktua')
+    else:
+        saskia = None 
+    
     context = {
         'izena': izena,
         'user_id': user_id,
         'perfil': perfil,
+        'saskia': saskia 
         
     }
     return render(request, 'addproducts.html',context)
