@@ -511,18 +511,7 @@ def delete_cart_item(request):
 
 def updateproducts(request,id):
     produktua = Produktua.objects.get(id = id)
-    izena = request.session.get('izena', '')
-    user_id = request.session.get('id')
-    perfil = request.session.get('perfil')
-    context = {
-            'izena': izena,
-            'user_id': user_id,
-            'perfil': perfil,
-            'produktua': produktua,
-            'id':id
-    }
-    
-    return render(request, 'updateproducts.html', context)
+    return render(request, 'updateproducts.html', {'id':id, 'produktua':produktua})
 
 def updateproducts_egin(request,id):
     produktua = Produktua.objects.get(id = id)
